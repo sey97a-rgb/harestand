@@ -7,6 +7,7 @@
 <meta name="description" content="開店祝い・周年祝いのスタンド花を那覇・豊見城・糸満など沖縄南部へ当日お届け。バルーン入り祝いスタンド¥16,500〜、胡蝶蘭も。立札・納品写真・回収無料、請求書払い・インボイス対応。糸満市西崎の工房から自社配達。">
 <link rel="canonical" href="https://harestand.com/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1A1A1B">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ハレスタ｜HARE STAND">
@@ -24,9 +25,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Shippori+Mincho:wght@600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;800&display=swap" rel="stylesheet">
 
-<!-- 構造化データ：Florist（住所の番地・LINE URLは公開前に差し替え） -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -43,45 +43,20 @@
   "priceRange": "¥16,500〜¥44,000",
   "currenciesAccepted": "JPY",
   "paymentAccepted": "クレジットカード, 銀行振込, 請求書払い",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "西崎",
-    "addressLocality": "糸満市",
-    "addressRegion": "沖縄県",
-    "postalCode": "901-0305",
-    "addressCountry": "JP"
-  },
+  "address": {"@type": "PostalAddress","streetAddress": "西崎","addressLocality": "糸満市","addressRegion": "沖縄県","postalCode": "901-0305","addressCountry": "JP"},
   "areaServed": [
-    {"@type": "City", "name": "那覇市"},
-    {"@type": "City", "name": "豊見城市"},
-    {"@type": "City", "name": "糸満市"},
-    {"@type": "City", "name": "南城市"},
-    {"@type": "City", "name": "南風原町"},
-    {"@type": "City", "name": "八重瀬町"},
-    {"@type": "City", "name": "与那原町"}
+    {"@type": "City", "name": "那覇市"},{"@type": "City", "name": "豊見城市"},{"@type": "City", "name": "糸満市"},{"@type": "City", "name": "南城市"},
+    {"@type": "City", "name": "南風原町"},{"@type": "City", "name": "八重瀬町"},{"@type": "City", "name": "与那原町"}
   ],
-  "openingHoursSpecification": [{
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-    "opens": "09:00",
-    "closes": "18:00"
-  }],
-  "parentOrganization": {
-    "@type": "Organization",
-    "name": "株式会社DAYS",
-    "url": "https://daysballoon.jp/"
-  },
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "祝い花スタンド・胡蝶蘭",
-    "itemListElement": [
-      {"@type": "Offer", "name": "祝いスタンド ハレ（1段・バルーン入り）", "price": "16500", "priceCurrency": "JPY"},
-      {"@type": "Offer", "name": "祝いスタンド ハレハレ（2段・バルーン入り）", "price": "27500", "priceCurrency": "JPY"},
-      {"@type": "Offer", "name": "祝いスタンド オオバレ（2段特大・バルーン入り）", "price": "44000", "priceCurrency": "JPY"},
-      {"@type": "Offer", "name": "胡蝶蘭 3本立ち 大輪白", "price": "27500", "priceCurrency": "JPY"},
-      {"@type": "Offer", "name": "胡蝶蘭 5本立ち 大輪白", "price": "38500", "priceCurrency": "JPY"}
-    ]
-  }
+  "openingHoursSpecification": [{"@type": "OpeningHoursSpecification","dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens": "09:00","closes": "18:00"}],
+  "parentOrganization": {"@type": "Organization","name": "株式会社DAYS","url": "https://daysballoon.jp/"},
+  "hasOfferCatalog": {"@type": "OfferCatalog","name": "祝い花スタンド・胡蝶蘭","itemListElement": [
+    {"@type": "Offer", "name": "祝いスタンド ハレ（1段・バルーン入り）", "price": "16500", "priceCurrency": "JPY"},
+    {"@type": "Offer", "name": "祝いスタンド ハレハレ（2段・バルーン入り）", "price": "27500", "priceCurrency": "JPY"},
+    {"@type": "Offer", "name": "祝いスタンド オオバレ（特大2段・バルーン入り）", "price": "44000", "priceCurrency": "JPY"},
+    {"@type": "Offer", "name": "胡蝶蘭 3本立ち 大輪白", "price": "27500", "priceCurrency": "JPY"},
+    {"@type": "Offer", "name": "胡蝶蘭 5本立ち 大輪白", "price": "38500", "priceCurrency": "JPY"}
+  ]}
 }
 </script>
 <script type="application/ld+json">
@@ -100,185 +75,216 @@
 
 <style>
 :root{
-  --ink:#1B2A4A;
-  --ink-soft:#4A5878;
+  --bk:#1A1A1B;
+  --bk2:#232325;
+  --wh:#FFFFFF;
+  --mute:#A9A9AD;
+  --hair:rgba(255,255,255,.14);
   --red:#D8382E;
-  --red-deep:#B5271F;
-  --paper:#FFFFFF;
-  --sky:#EEF5FA;
-  --sky-deep:#D9E8F2;
   --gold:#C9A24B;
   --line:#06C755;
-  --radius:14px;
-  --w:640px;
-  --font-body:"Zen Kaku Gothic New",system-ui,-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;
-  --font-tag:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+  --oswald:"Oswald","Noto Sans JP",sans-serif;
+  --sans:"Noto Sans JP",system-ui,-apple-system,"Hiragino Sans",sans-serif;
+  --serif:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;
+  --w:1040px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{
-  font-family:var(--font-body);color:var(--ink);background:var(--paper);
-  line-height:1.75;font-weight:500;font-size:16px;
-  padding-bottom:84px; /* 固定CTAぶん */
-}
+body{font-family:var(--sans);background:var(--bk);color:var(--wh);line-height:1.9;font-size:15px;font-weight:400;padding-bottom:76px}
 img{max-width:100%;display:block}
-a{color:inherit}
-h1,h2,h3{line-height:1.3;font-weight:900;letter-spacing:.01em}
-h2{font-size:1.55rem;margin-bottom:.9rem}
-h3{font-size:1.1rem}
-p{max-width:36em}
-.wrap{max-width:var(--w);margin:0 auto;padding:0 20px}
-section{padding:56px 0}
-.lead{color:var(--ink-soft);font-size:.98rem}
-:focus-visible{outline:3px solid var(--red);outline-offset:3px;border-radius:4px}
+a{color:inherit;text-decoration:none}
+p{max-width:40em}
+.wrap{max-width:var(--w);margin:0 auto;padding:0 24px}
+section{padding:96px 0}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+/* 見出し：— NEWS — のスタイル */
+.ttl{font-family:var(--oswald);font-weight:600;font-size:32px;letter-spacing:.06em;text-transform:uppercase;text-align:center;display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:56px;line-height:1}
+.ttl::before,.ttl::after{content:"";width:22px;height:2px;background:currentColor;opacity:.9}
+.ttl small{font-family:var(--sans);font-size:12px;letter-spacing:.2em;color:var(--mute);display:block;margin-top:10px;font-weight:500}
+.ttl.v{flex-direction:column;gap:0}
+.ttl.v::before,.ttl.v::after{display:none}
 
 /* ---------- header ---------- */
-.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:saturate(1.3) blur(8px);border-bottom:1px solid var(--sky-deep)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
-.brand{display:flex;align-items:baseline;gap:8px;text-decoration:none}
-.brand .ja{font-size:1.25rem;font-weight:900;letter-spacing:.06em}
-.brand .en{font-size:.68rem;letter-spacing:.18em;color:var(--ink-soft)}
-.top .tel{font-size:.85rem;font-weight:700;text-decoration:none;color:var(--ink-soft)}
+.top{position:fixed;inset:0 0 auto 0;z-index:40;height:64px;background:rgba(26,26,27,.86);backdrop-filter:blur(8px);transition:background .3s}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px}
+.logo .mark{width:40px;height:40px}
+.logo .name{font-family:var(--oswald);font-weight:600;font-size:18px;letter-spacing:.14em;line-height:1}
+.logo .name small{display:block;font-family:var(--sans);font-size:10px;letter-spacing:.18em;color:var(--mute);margin-top:3px;font-weight:500}
+.burger{width:44px;height:44px;background:none;border:0;cursor:pointer;display:grid;place-items:center;position:relative;z-index:50}
+.burger span{display:block;width:26px;height:2px;background:#fff;margin:4px 0;transition:transform .3s,opacity .3s}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.menu{position:fixed;inset:0;z-index:45;background:rgba(26,26,27,.97);display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.menu[data-open="true"]{opacity:1;pointer-events:auto}
+.menu ul{list-style:none;text-align:center}
+.menu li a{display:block;font-family:var(--oswald);font-size:30px;letter-spacing:.12em;padding:10px 0;text-transform:uppercase}
+.menu li a small{display:block;font-family:var(--sans);font-size:12px;letter-spacing:.2em;color:var(--mute);margin-top:-2px}
 
 /* ---------- hero ---------- */
-.hero{padding:40px 0 48px;background:
-  radial-gradient(520px 320px at 85% -10%,var(--sky) 0,transparent 70%),
-  radial-gradient(380px 300px at -10% 100%,var(--sky) 0,transparent 70%);
-  overflow:hidden}
-.hero .wrap{display:grid;grid-template-columns:1fr 104px;gap:18px;align-items:end}
-.hero h1{grid-column:1/-1;font-size:clamp(1.7rem,6.6vw,2.15rem);letter-spacing:.015em;margin-bottom:10px}
-.hero h1 .area{display:block;font-size:.5em;font-weight:700;color:var(--ink-soft);letter-spacing:.1em;margin-bottom:8px}
-.hero .lead{margin-bottom:22px}
-.hero .cta{display:flex;flex-direction:column;gap:10px;max-width:360px}
-.deadline{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;border-radius:999px;padding:6px 14px;font-size:.82rem;font-weight:700}
-.deadline b{color:#FFD4CF;font-weight:900}
+.hero{position:relative;min-height:100svh;padding:0;display:grid;place-items:center;overflow:hidden;background:
+  radial-gradient(900px 600px at 50% 110%,#2C2A24 0,transparent 65%),
+  linear-gradient(180deg,#141415 0%,var(--bk) 100%)}
+.hero .grain{position:absolute;inset:0;opacity:.07;background-image:
+  radial-gradient(#fff 1px,transparent 1px),radial-gradient(#fff 1px,transparent 1px);
+  background-size:26px 26px,41px 41px;background-position:0 0,13px 20px;pointer-events:none}
+.hero .inner{position:relative;text-align:center;padding:110px 24px 90px}
+.hero .en{font-family:var(--oswald);font-weight:500;font-size:13px;letter-spacing:.42em;color:var(--mute);text-transform:uppercase;margin-bottom:28px}
+.tablet{width:150px;height:430px;margin:0 auto 34px;background:linear-gradient(180deg,#FFFCF4 0%,#F2E9D0 100%);border-top:8px solid var(--gold);border-radius:3px;box-shadow:0 40px 60px -30px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.08);display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:30px 0 26px;position:relative}
+.tablet::before{content:"";position:absolute;top:-24px;left:50%;width:8px;height:16px;background:var(--gold);transform:translateX(-50%)}
+.tablet .vt{display:block;width:1.05em;word-break:break-all;line-break:anywhere;text-align:center;line-height:1.25;font-family:var(--serif)}
+.tablet .omote{font-size:42px;font-weight:800;color:var(--red)}
+.tablet .okuri{display:flex;gap:4px;align-items:flex-start;justify-content:center;color:#4A4A50}
+.tablet .okuri span{display:block;width:1.05em;word-break:break-all;line-break:anywhere;font-size:17px;font-weight:600;line-height:1.3}
+.tablet .okuri small{display:block;width:1.05em;word-break:break-all;line-break:anywhere;font-size:12px;font-weight:600;padding-top:3px;line-height:1.3}
+.hero h1{font-size:clamp(26px,5.2vw,44px);font-weight:700;line-height:1.35;letter-spacing:.04em;margin-bottom:14px}
+.hero .sub{color:var(--mute);font-size:14px;letter-spacing:.08em;max-width:none}
+.hero .pill{display:inline-block;margin-top:26px;border:1px solid var(--hair);padding:8px 18px;font-size:12px;letter-spacing:.14em;color:#E5E5E8}
+.hero .pill b{color:#FFD4CF;font-weight:700}
+.scrolldown{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);font-family:var(--oswald);font-size:11px;letter-spacing:.3em;color:var(--mute)}
+.scrolldown::after{content:"";display:block;width:1px;height:34px;background:var(--mute);margin:8px auto 0;animation:drop 2s infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@media (prefers-reduced-motion:reduce){.scrolldown::after{animation:none}}
 
-/* 立札：ページでいちばん目を引く要素 */
-.tag{
-  --tag-w:104px;
-  width:var(--tag-w);height:330px;background:linear-gradient(180deg,#FFFCF4 0%,#F6EED8 100%);
-  border:1px solid #E6D8B4;border-top:6px solid var(--gold);border-radius:4px 4px 2px 2px;
-  box-shadow:0 14px 24px -14px rgba(27,42,74,.45),inset 0 0 0 4px #fff;
-  display:flex;flex-direction:column;align-items:center;justify-content:space-between;
-  padding:18px 0 16px;position:relative;margin-left:auto}
-.tag::before{content:"";position:absolute;top:-16px;left:50%;width:6px;height:16px;background:var(--gold);transform:translateX(-50%)}
-/* 縦書きは1文字幅に折り返して縦に積む（writing-modeより環境差が出ない） */
-.tag .vt{display:block;flex:none;width:1.05em;margin:0 auto;word-break:break-all;line-break:anywhere;text-align:center;line-height:1.28;font-family:var(--font-tag);color:var(--ink)}
-.tag .omote{font-size:1.9rem;font-weight:800;color:var(--red)}
-.tag .okuri{font-size:.9rem;font-weight:600;color:var(--ink-soft)}
-.tag .okuri br,.tag .okuri small{display:none}
+/* ---------- plans ---------- */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.card{display:block;background:var(--bk2);border:1px solid var(--hair);padding:0 0 26px;position:relative;transition:border-color .3s}
+.card:hover{border-color:rgba(255,255,255,.4)}
+.card .fig{height:260px;display:flex;align-items:flex-end;justify-content:center;background:linear-gradient(180deg,#1E1E20 0%,#2A2A2D 100%);padding-bottom:30px;position:relative;overflow:hidden}
+.card .fig::after{content:"";position:absolute;left:50%;bottom:16px;width:120px;height:6px;background:rgba(0,0,0,.6);filter:blur(5px);transform:translateX(-50%)}
+.st{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center}
+.st .bloom{width:84px;border-radius:42px 42px 10px 10px;background:linear-gradient(180deg,#E24A40 0%,#B5271F 100%);position:relative;box-shadow:inset -14px -10px 30px rgba(0,0,0,.25)}
+.st .bloom::before,.st .bloom::after{content:"";position:absolute;border-radius:50%}
+.st .bloom::before{width:30px;height:30px;background:#FFD4CF;top:-14px;left:-8px}
+.st .bloom::after{width:24px;height:24px;background:var(--gold);top:8px;right:-10px}
+.st .leg{width:4px;background:#3A3A3E}
+.st.s .bloom{height:110px}.st.s .leg{height:36px}
+.st.m .bloom{height:150px}.st.m .leg{height:36px}
+.st.l .bloom{height:180px;width:96px}.st.l .leg{height:36px}
+.card .body{padding:22px 22px 0}
+.card .en{font-family:var(--oswald);font-size:12px;letter-spacing:.3em;color:var(--mute);text-transform:uppercase}
+.card h3{font-size:22px;font-weight:700;letter-spacing:.06em;margin:4px 0 2px}
+.card h3 small{font-size:12px;color:var(--mute);margin-left:8px;font-weight:500;letter-spacing:.1em}
+.card .price{font-family:var(--oswald);font-size:30px;font-weight:600;letter-spacing:.02em;margin:8px 0 10px}
+.card .price span{font-family:var(--sans);font-size:11px;color:var(--mute);margin-left:8px;letter-spacing:.1em}
+.card p{font-size:13px;color:#C9C9CE;line-height:1.8}
+.card.big{border-color:var(--gold)}
+.card.big::after{content:"MOST POPULAR";position:absolute;top:14px;left:14px;z-index:2;font-family:var(--oswald);font-size:11px;letter-spacing:.2em;color:var(--bk);background:var(--gold);padding:4px 10px}
+.incl{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 28px;margin:48px auto 0;font-size:12px;letter-spacing:.14em;color:var(--mute);list-style:none}
+.incl li::before{content:"";display:inline-block;width:6px;height:6px;background:var(--gold);margin-right:10px;vertical-align:2px}
+.orchid{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:720px;margin:56px auto 0}
+.orchid a{border:1px solid var(--hair);padding:28px 24px;text-align:center;transition:border-color .3s}
+.orchid a:hover{border-color:rgba(255,255,255,.4)}
+.orchid .en{font-family:var(--oswald);font-size:12px;letter-spacing:.3em;color:var(--mute)}
+.orchid .n{font-size:20px;font-weight:700;letter-spacing:.08em;margin:6px 0 2px}
+.orchid .price{font-family:var(--oswald);font-size:28px;font-weight:600}
+.orchid small{display:block;font-size:12px;color:var(--mute);letter-spacing:.1em;margin-top:4px}
+.note{font-size:12px;color:var(--mute);text-align:center;letter-spacing:.06em;margin-top:22px;max-width:none}
 
-/* ---------- buttons ---------- */
-.btn{display:flex;align-items:center;justify-content:center;gap:10px;border-radius:12px;padding:15px 18px;font-weight:900;font-size:1.02rem;text-decoration:none;border:0;cursor:pointer;line-height:1.2}
-.btn-line{background:var(--line);color:#fff;box-shadow:0 10px 20px -12px rgba(6,199,85,.7)}
-.btn-line:active{transform:translateY(1px)}
-.btn-ghost{background:#fff;color:var(--ink);border:2px solid var(--ink)}
-.btn svg{width:22px;height:22px;flex:none}
-.note{font-size:.78rem;color:var(--ink-soft)}
-
-/* ---------- 3 plans ---------- */
-.plans{background:var(--sky)}
-.plans .lead{margin-bottom:22px}
-.plan{
-  display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:stretch;
-  background:#fff;border-radius:var(--radius);padding:18px 16px 16px;margin-bottom:12px;
-  border:1px solid var(--sky-deep);text-decoration:none;position:relative}
-.plan.big{border:2px solid var(--red);padding-top:28px}
-.plan.big::after{content:"いちばん選ばれる";position:absolute;top:-1px;right:16px;background:var(--red);color:#fff;font-size:.72rem;font-weight:900;padding:4px 10px;border-radius:0 0 8px 8px;letter-spacing:.06em}
-/* スタンドの高さをそのまま図にする */
-.stand{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;min-height:84px}
-.stand::after{content:"";width:30px;height:4px;background:var(--ink);border-radius:2px;margin-top:6px;opacity:.85}
-.stand i{display:block;width:34px;border-radius:17px 17px 4px 4px;background:linear-gradient(180deg,var(--red) 0,var(--red-deep) 100%);position:relative}
-.stand i::before,.stand i::after{content:"";position:absolute;border-radius:50%;background:#FFD4CF;width:12px;height:12px;top:-8px;left:-2px}
-.stand i::after{background:var(--gold);left:auto;right:-4px;top:4px;width:10px;height:10px}
-.stand.s i{height:48px}.stand.m i{height:72px}.stand.l i{height:96px;width:40px}
-.plan h3{font-size:1.15rem;margin-bottom:2px}
-.plan h3 small{font-weight:700;color:var(--ink-soft);font-size:.78rem;margin-left:6px}
-.plan p{font-size:.86rem;color:var(--ink-soft);line-height:1.6}
-.price{text-align:right;align-self:center;white-space:nowrap}
-.price b{display:block;font-size:1.45rem;font-weight:900;letter-spacing:-.01em}
-.price span{font-size:.72rem;color:var(--ink-soft)}
-.includes{display:flex;flex-wrap:wrap;gap:6px 10px;margin:14px 0 4px;font-size:.82rem;font-weight:700}
-.includes li{list-style:none;background:#fff;border:1px solid var(--sky-deep);border-radius:999px;padding:4px 12px}
-
-/* ---------- 胡蝶蘭 ---------- */
-.orchid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
-.orchid a{background:var(--sky);border-radius:var(--radius);padding:18px 16px;text-decoration:none}
-.orchid b{display:block;font-size:1.3rem;font-weight:900}
-.orchid small{display:block;color:var(--ink-soft);font-size:.8rem;margin-top:2px}
-.orchid .n{font-size:1.05rem;font-weight:900;margin-bottom:6px}
+/* ---------- about（白反転） ---------- */
+.about{background:#fff;color:var(--bk)}
+.about .ttl{color:var(--bk)}
+.about .cols{display:grid;grid-template-columns:1fr 1.4fr;gap:60px;align-items:center}
+.about .mark{text-align:center}
+.about .mark svg{width:min(100%,300px);margin:0 auto}
+.about h3{font-family:var(--oswald);font-size:30px;font-weight:600;letter-spacing:.1em;margin-bottom:18px;line-height:1.1}
+.about p{font-size:14px;line-height:2;color:#222;margin-bottom:16px}
+.about p.en{font-size:12.5px;color:#666;line-height:1.9;letter-spacing:.01em}
 
 /* ---------- reasons ---------- */
-.reasons{display:grid;gap:0;margin-top:8px}
-.reasons div{padding:16px 0;border-top:1px solid var(--sky-deep)}
-.reasons div:last-child{border-bottom:1px solid var(--sky-deep)}
-.reasons h3{font-size:1.02rem;margin-bottom:4px}
-.reasons p{font-size:.9rem;color:var(--ink-soft)}
+.reasons{display:grid;grid-template-columns:1fr 1fr;gap:0 60px;border-top:1px solid var(--hair)}
+.reasons div{padding:28px 0;border-bottom:1px solid var(--hair)}
+.reasons .en{font-family:var(--oswald);font-size:12px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase}
+.reasons h3{font-size:18px;font-weight:700;letter-spacing:.06em;margin:6px 0 8px}
+.reasons p{font-size:13.5px;color:#C9C9CE;line-height:1.9}
 
-/* ---------- 受け取る側 ---------- */
-.owner{background:var(--ink);color:#fff}
-.owner h2,.owner .lead{color:#fff}
-.owner .lead{color:#C8D3E6}
-.owner .box{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:var(--radius);padding:18px 16px;margin-top:14px}
-.owner .box h3{margin-bottom:4px}
-.owner .box p{font-size:.9rem;color:#C8D3E6}
-.owner .btn-ghost{background:transparent;color:#fff;border-color:#fff;margin-top:16px;max-width:360px}
+/* ---------- owner（開店する側） ---------- */
+.owner .cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px}
+.owner .box{border:1px solid var(--hair);padding:26px 22px}
+.owner .box h3{font-size:17px;font-weight:700;letter-spacing:.06em;margin-bottom:8px}
+.owner .box p{font-size:13px;color:#C9C9CE;line-height:1.9}
+.owner .box .price{font-family:var(--oswald);font-size:22px;margin-top:12px;color:var(--gold)}
 
-/* ---------- gallery（写真が揃うまで非表示） ---------- */
-.gallery[hidden]{display:none}
-.shots{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
-.shots img{aspect-ratio:1;object-fit:cover;border-radius:8px}
+/* ---------- gallery ---------- */
+.gallery{padding:96px 0 0}
+.gallery .ttl{margin-bottom:40px}
+.strip{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 24px 24px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.strip::-webkit-scrollbar{display:none}
+.strip > *{flex:0 0 min(78vw,520px);aspect-ratio:4/5;scroll-snap-align:center;background:#2A2A2D;border:1px solid var(--hair);display:grid;place-items:center;color:var(--mute);font-family:var(--oswald);letter-spacing:.3em;font-size:12px}
+.strip img{width:100%;height:100%;object-fit:cover}
 
-/* ---------- area ---------- */
-.area-list{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 10px}
-.area-list li{list-style:none;background:var(--sky);border-radius:8px;padding:8px 12px;font-weight:700;font-size:.9rem}
-.area-list li.today{background:var(--red);color:#fff}
-.legend{font-size:.8rem;color:var(--ink-soft)}
-.legend i{display:inline-block;width:10px;height:10px;background:var(--red);border-radius:2px;vertical-align:-1px;margin-right:4px}
-
-/* ---------- flow ---------- */
-.flow{counter-reset:step;margin-top:8px}
-.flow li{list-style:none;counter-increment:step;display:grid;grid-template-columns:36px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--sky-deep)}
-.flow li::before{content:counter(step);width:36px;height:36px;border-radius:50%;background:var(--ink);color:#fff;font-weight:900;display:grid;place-items:center;font-size:.95rem}
-.flow b{display:block}
-.flow p{font-size:.88rem;color:var(--ink-soft)}
-
-/* ---------- faq ---------- */
-.faq details{border-top:1px solid var(--sky-deep);padding:4px 0}
-.faq details:last-child{border-bottom:1px solid var(--sky-deep)}
-.faq summary{cursor:pointer;font-weight:900;padding:12px 28px 12px 0;position:relative;list-style:none}
+/* ---------- area / flow / faq ---------- */
+.areas{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;list-style:none;margin-bottom:20px}
+.areas li{border:1px solid var(--hair);padding:8px 16px;font-size:13px;letter-spacing:.1em}
+.areas li.today{border-color:var(--red);background:var(--red)}
+.flow{list-style:none;counter-reset:s;max-width:720px;margin:0 auto}
+.flow li{counter-increment:s;display:grid;grid-template-columns:70px 1fr;gap:20px;padding:24px 0;border-top:1px solid var(--hair)}
+.flow li:last-child{border-bottom:1px solid var(--hair)}
+.flow li::before{content:"0" counter(s);font-family:var(--oswald);font-size:34px;font-weight:600;color:var(--gold);line-height:1}
+.flow b{display:block;font-size:17px;letter-spacing:.06em;margin-bottom:4px}
+.flow p{font-size:13.5px;color:#C9C9CE}
+.faq{max-width:720px;margin:0 auto}
+.faq details{border-top:1px solid var(--hair)}
+.faq details:last-child{border-bottom:1px solid var(--hair)}
+.faq summary{cursor:pointer;list-style:none;padding:20px 36px 20px 0;font-weight:700;letter-spacing:.04em;position:relative;font-size:15px}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"＋";position:absolute;right:2px;top:10px;color:var(--red);font-weight:900}
-.faq details[open] summary::after{content:"－"}
-.faq p{font-size:.92rem;color:var(--ink-soft);padding:0 0 14px}
+.faq summary::after{content:"+";position:absolute;right:4px;top:16px;font-family:var(--oswald);font-size:24px;color:var(--gold)}
+.faq details[open] summary::after{content:"–"}
+.faq p{font-size:13.5px;color:#C9C9CE;padding:0 0 22px;max-width:none}
 
-/* ---------- footer ---------- */
-footer{background:var(--sky);padding:36px 0 40px;font-size:.86rem;color:var(--ink-soft)}
-footer .brand{margin-bottom:10px}
-footer address{font-style:normal;line-height:1.9}
-footer .links{margin-top:14px;display:flex;gap:16px;flex-wrap:wrap}
-footer .links a{text-decoration:none;font-weight:700}
+/* ---------- contact / footer ---------- */
+.contact{text-align:center}
+.contact .btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;background:var(--line);color:#fff;font-weight:700;font-size:17px;letter-spacing:.08em;padding:18px 44px;border-radius:4px}
+.contact .btn svg{width:24px;height:24px}
+.contact .tel{display:block;margin-top:22px;font-family:var(--oswald);font-size:30px;letter-spacing:.06em}
+.contact .tel small{display:block;font-family:var(--sans);font-size:12px;color:var(--mute);letter-spacing:.14em;margin-top:2px}
+footer{border-top:1px solid var(--hair);padding:48px 0 56px;text-align:center;color:var(--mute);font-size:12px;letter-spacing:.08em}
+footer .logo{justify-content:center;margin-bottom:18px}
+footer address{font-style:normal;line-height:2}
+footer .links{margin-top:18px;display:flex;justify-content:center;gap:22px;flex-wrap:wrap}
+footer .links a{color:#fff}
+footer .copy{margin-top:26px;font-family:var(--oswald);letter-spacing:.2em}
 
-/* ---------- fixed CTA ---------- */
-.bar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(255,255,255,.96);border-top:1px solid var(--sky-deep);padding:10px 12px calc(10px + env(safe-area-inset-bottom))}
-.bar .wrap{display:grid;grid-template-columns:1fr 56px;gap:10px;padding:0}
-.bar .btn{padding:13px 16px}
-.bar .call{display:grid;place-items:center;border-radius:12px;border:2px solid var(--ink);text-decoration:none}
+/* ---------- fixed bar ---------- */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(26,26,27,.94);border-top:1px solid var(--hair);padding:10px 12px calc(10px + env(safe-area-inset-bottom))}
+.bar .wrap{display:grid;grid-template-columns:1fr 54px;gap:10px;max-width:560px;padding:0}
+.bar .go{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--line);color:#fff;font-weight:700;font-size:15px;letter-spacing:.06em;height:50px;border-radius:4px}
+.bar .go svg{width:22px;height:22px}
+.bar .call{display:grid;place-items:center;border:1px solid rgba(255,255,255,.5);border-radius:4px;height:50px}
 .bar .call svg{width:22px;height:22px}
 
-@media (min-width:640px){
-  .hero{padding:64px 0 72px}
-  .hero .wrap{grid-template-columns:1fr 150px;gap:40px}
-  .hero h1{grid-column:1;grid-row:1}
-  .hero h1 + div{grid-column:1;grid-row:2}
-  .tag{--tag-w:150px;height:400px;padding:26px 0 22px;grid-column:2;grid-row:1/3}
-  .tag .omote{font-size:2.6rem}
-  .tag .okuri{font-size:1.1rem}
-  .tag .okuri{display:flex;width:auto;gap:4px;justify-content:center;align-items:flex-start}
-  .tag .okuri span{display:block;width:1.05em;word-break:break-all;line-break:anywhere}
-  .tag .okuri small{display:block;width:1.05em;font-size:.72em;word-break:break-all;line-break:anywhere;padding-top:.2em}
-  .shots{gap:10px}
+/* ---------- fade in ---------- */
+.fadein{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
+.fadein.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.fadein{opacity:1;transform:none;transition:none}}
+
+/* ---------- responsive ---------- */
+@media (max-width:860px){
+  section{padding:72px 0}
+  .ttl{font-size:26px;margin-bottom:40px}
+  .grid3{grid-template-columns:1fr;gap:16px;max-width:460px;margin:0 auto}
+  .card .fig{height:200px}
+  .st.s .bloom{height:84px}.st.m .bloom{height:112px}.st.l .bloom{height:134px}
+  .about .cols{grid-template-columns:1fr;gap:36px}
+  .reasons{grid-template-columns:1fr}
+  .owner .cols{grid-template-columns:1fr;gap:14px}
+  .orchid{gap:14px}
+  .hero{min-height:0}
+  .tablet{width:104px;height:290px;padding:20px 0 18px;margin-bottom:28px}
+  .tablet .omote{font-size:28px}
+  .tablet .okuri span{font-size:13px}.tablet .okuri small{font-size:9.5px}
+  .hero .en{font-size:11px;letter-spacing:.3em;margin-bottom:22px}
+  .hero .inner{padding:92px 20px 64px}
+  .hero .sub{font-size:13px}
+  .scrolldown{display:none}
+  .flow li{grid-template-columns:52px 1fr;gap:14px}
+  .flow li::before{font-size:26px}
+}
+@media (max-width:420px){
+  .orchid{grid-template-columns:1fr}
+  .logo .name{font-size:16px}
 }
 </style>
 </head>
@@ -286,162 +292,169 @@ footer .links a{text-decoration:none;font-weight:700}
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="/" aria-label="ハレスタ トップ"><span class="ja">ハレスタ</span><span class="en">HARE STAND</span></a>
-    <a class="tel" href="tel:09082929414">090-8292-9414</a>
+    <a class="logo" href="#top" aria-label="ハレスタ トップへ">
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="31" fill="none" stroke="#fff" stroke-width="1.5"/><rect x="24" y="14" width="16" height="36" rx="1.5" fill="#FFFCF4"/><rect x="24" y="14" width="16" height="3.5" fill="#C9A24B"/><text x="32" y="38" text-anchor="middle" font-family="serif" font-weight="700" font-size="15" fill="#D8382E">祝</text></svg>
+      <span class="name">HARE STAND<small>ハレスタ｜那覇・南部の祝い花</small></span>
+    </a>
+    <button class="burger" aria-label="メニュー" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
   </div>
 </header>
+<nav class="menu" id="menu" data-open="false">
+  <ul>
+    <li><a href="#top">Home<small>トップ</small></a></li>
+    <li><a href="#plans">Stand<small>祝いスタンド・胡蝶蘭</small></a></li>
+    <li><a href="#about">About<small>ハレスタについて</small></a></li>
+    <li><a href="#owner">For Owners<small>開店するお店の方へ</small></a></li>
+    <li><a href="#area">Area<small>お届けエリア</small></a></li>
+    <li><a href="#faq">FAQ<small>よくある質問</small></a></li>
+    <li><a href="#contact">Contact<small>ご注文・お問い合わせ</small></a></li>
+  </ul>
+</nav>
 
-<main>
+<main id="top">
 <!-- ================= HERO ================= -->
 <section class="hero">
-  <div class="wrap">
-    <h1><span class="area">那覇・豊見城・糸満・南部エリア</span>開店祝いのスタンド花、<br>南部なら今日届く。</h1>
-    <div>
-      <p class="lead">バルーンと生花をひとつにした祝いスタンドを、糸満市西崎の工房から自社配達。立札も納品写真も回収も、ぜんぶ込みです。</p>
-      <div class="cta">
-        <span class="deadline">当日お届けは <b>12時まで</b> の受付</span>
-        <a class="btn btn-line" href="https://lin.ee/XXXXXXX" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 5.7 2 10.3c0 4.1 3.6 7.5 8.5 8.2.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.9-3.5 8-6c1.5-1.6 2.2-3.3 2.2-5.1C22 5.7 17.5 2 12 2z"/></svg>
-          LINEで注文する
-        </a>
-        <span class="note">用途・ご予算・立札の文字を送るだけ。10分以内に折り返します（9:00〜18:00）。</span>
-      </div>
-    </div>
-    <div class="tag" aria-label="立札のイメージ">
+  <div class="grain"></div>
+  <div class="inner">
+    <p class="en">Celebration Flower Stand — Naha · South Okinawa</p>
+    <div class="tablet" aria-label="立札のイメージ">
       <span class="vt omote">祝御開店</span>
-      <span class="vt okuri"><span>株式会社〇〇</span><small>代表取締役〇〇〇〇</small></span>
+      <span class="okuri"><span>株式会社〇〇</span><small>代表取締役〇〇〇〇</small></span>
     </div>
+    <h1>開店祝いのスタンド花、<br>南部なら今日届く。</h1>
+    <p class="sub">バルーンと生花をひとつにした祝いスタンド。糸満市西崎の工房から自社配達。</p>
+    <span class="pill">当日お届けは <b>12時まで</b> の受付</span>
   </div>
+  <div class="scrolldown">SCROLL</div>
 </section>
 
 <!-- ================= PLANS ================= -->
-<section class="plans" id="plans">
+<section id="plans" class="fadein">
   <div class="wrap">
-    <h2>祝いスタンドは3つだけ</h2>
-    <p class="lead">迷わないように絞りました。どれもバルーン入り。価格は税込、南部への配達料も込みです。</p>
-
-    <a class="plan" href="https://lin.ee/XXXXXXX" rel="noopener">
-      <div class="stand s"><i></i></div>
-      <div>
-        <h3>ハレ<small>1段</small></h3>
-        <p>美容室・サロン・小さなカフェに。入口に置いてちょうどいい大きさ。</p>
-      </div>
-      <div class="price"><b>¥16,500</b><span>高さ約160cm</span></div>
-    </a>
-
-    <a class="plan big" href="https://lin.ee/XXXXXXX" rel="noopener">
-      <div class="stand m"><i></i></div>
-      <div>
-        <h3>ハレハレ<small>2段</small></h3>
-        <p>飲食店・クリニック・事務所の開店祝いの定番。写真映えするボリューム。</p>
-      </div>
-      <div class="price"><b>¥27,500</b><span>高さ約180cm</span></div>
-    </a>
-
-    <a class="plan" href="https://lin.ee/XXXXXXX" rel="noopener">
-      <div class="stand l"><i></i></div>
-      <div>
-        <h3>オオバレ<small>特大2段</small></h3>
-        <p>グランドオープン・竣工・周年。並んだ花の中でいちばん目立たせたいときに。</p>
-      </div>
-      <div class="price"><b>¥44,000</b><span>高さ約200cm</span></div>
-    </a>
-
-    <ul class="includes">
+    <h2 class="ttl">Stand</h2>
+    <div class="grid3">
+      <a class="card" href="https://lin.ee/XXXXXXX" rel="noopener">
+        <div class="fig"><div class="st s"><div class="bloom"></div><div class="leg"></div></div></div>
+        <div class="body">
+          <div class="en">One Tier</div>
+          <h3>ハレ<small>1段・高さ約160cm</small></h3>
+          <div class="price">¥16,500<span>税込・配達料込</span></div>
+          <p>美容室・サロン・小さなカフェに。入口に置いてちょうどいい大きさ。</p>
+        </div>
+      </a>
+      <a class="card big" href="https://lin.ee/XXXXXXX" rel="noopener">
+        <div class="fig"><div class="st m"><div class="bloom"></div><div class="leg"></div></div></div>
+        <div class="body">
+          <div class="en">Two Tier</div>
+          <h3>ハレハレ<small>2段・高さ約180cm</small></h3>
+          <div class="price">¥27,500<span>税込・配達料込</span></div>
+          <p>飲食店・クリニック・事務所の開店祝いの定番。写真映えするボリューム。</p>
+        </div>
+      </a>
+      <a class="card" href="https://lin.ee/XXXXXXX" rel="noopener">
+        <div class="fig"><div class="st l"><div class="bloom"></div><div class="leg"></div></div></div>
+        <div class="body">
+          <div class="en">Two Tier · Large</div>
+          <h3>オオバレ<small>特大2段・高さ約200cm</small></h3>
+          <div class="price">¥44,000<span>税込・配達料込</span></div>
+          <p>グランドオープン・竣工・周年。並んだ花の中でいちばん目立たせたいときに。</p>
+        </div>
+      </a>
+    </div>
+    <ul class="incl">
       <li>バルーン入り</li><li>立札 無料</li><li>納品写真をLINEで</li><li>回収 無料</li><li>南部配達料 込み</li>
     </ul>
-    <p class="note">お花の種類と色はお任せが基本。「赤系で」「白と緑で上品に」など、雰囲気のご希望は反映します。</p>
+    <p class="note">お花の種類と色はお任せが基本。「赤系で」「白と緑で上品に」など雰囲気のご希望は反映します。</p>
 
-    <h2 style="margin-top:44px">胡蝶蘭も、2つだけ</h2>
-    <p class="lead">就任・開院・落成など、格式が要るときに。大輪白、ラッピングと立札つき。</p>
+    <h2 class="ttl" style="margin-top:96px">Orchid</h2>
     <div class="orchid">
-      <a href="https://lin.ee/XXXXXXX" rel="noopener"><span class="n">3本立ち</span><b>¥27,500</b><small>大輪白・30輪前後</small></a>
-      <a href="https://lin.ee/XXXXXXX" rel="noopener"><span class="n">5本立ち</span><b>¥38,500</b><small>大輪白・50輪前後</small></a>
+      <a href="https://lin.ee/XXXXXXX" rel="noopener"><div class="en">3 Stems</div><div class="n">胡蝶蘭 3本立ち</div><div class="price">¥27,500</div><small>大輪白・30輪前後・立札つき</small></a>
+      <a href="https://lin.ee/XXXXXXX" rel="noopener"><div class="en">5 Stems</div><div class="n">胡蝶蘭 5本立ち</div><div class="price">¥38,500</div><small>大輪白・50輪前後・立札つき</small></a>
     </div>
-    <p class="note" style="margin-top:10px">胡蝶蘭は仕入れの都合で前日12時までのご注文をお願いしています。</p>
+    <p class="note">就任・開院・落成など格式が要るときに。仕入れの都合で前日12時までのご注文をお願いしています。</p>
+  </div>
+</section>
+
+<!-- ================= ABOUT（白反転） ================= -->
+<section id="about" class="about">
+  <div class="wrap">
+    <h2 class="ttl">About</h2>
+    <div class="cols fadein">
+      <div class="mark">
+        <svg viewBox="0 0 300 300" aria-label="HARE STAND ロゴ">
+          <circle cx="150" cy="150" r="146" fill="none" stroke="#1A1A1B" stroke-width="3"/>
+          <rect x="116" y="40" width="68" height="150" rx="3" fill="#FFFCF4" stroke="#1A1A1B" stroke-width="3"/>
+          <rect x="116" y="40" width="68" height="12" fill="#C9A24B"/>
+          <text x="150" y="98" text-anchor="middle" font-family="'Noto Serif JP',serif" font-weight="800" font-size="36" fill="#D8382E">祝</text>
+          <text x="150" y="142" text-anchor="middle" font-family="'Noto Serif JP',serif" font-weight="800" font-size="36" fill="#D8382E">御</text>
+          <text x="150" y="178" text-anchor="middle" font-family="'Noto Serif JP',serif" font-weight="600" font-size="18" fill="#4A4A50">開店</text>
+          <text x="150" y="236" text-anchor="middle" font-family="Oswald,sans-serif" font-weight="600" font-size="24" letter-spacing="3" fill="#1A1A1B">HARE STAND</text>
+          <text x="150" y="256" text-anchor="middle" font-family="'Noto Sans JP',sans-serif" font-weight="500" font-size="8" letter-spacing="2" fill="#666">NAHA · SOUTH OKINAWA</text>
+        </svg>
+      </div>
+      <div>
+        <h3>HARE STAND</h3>
+        <p>ハレスタは、沖縄南部の「ハレの日」を飾る祝い花専門店です。運営は沖縄でバルーン装飾を手がける株式会社DAYS。ホテルや企業の演出で培ったバルーンの技術を、開店祝い・周年祝いのスタンド花にそのまま注ぎ込みます。バルーンは外注せず自社で膨らませ、糸満市西崎の工房から自分たちで運ぶ。だから同じ金額でも華やかで、南部なら今日届きます。</p>
+        <p class="en">HARE STAND is a celebration flower stand specialist for Naha and southern Okinawa, run by DAYS Co., Ltd., a balloon décor company trusted by hotels and businesses across the island. Every stand is built in our Itoman studio, balloons inflated in-house, and delivered by our own team — same day across the south.</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ================= REASONS ================= -->
-<section id="why">
+<section id="why" class="fadein">
   <div class="wrap">
-    <h2>ハレスタが選ばれる理由</h2>
+    <h2 class="ttl">Why Hare Stand</h2>
     <div class="reasons">
-      <div>
-        <h3>バルーン装飾の会社がつくる、花のスタンド</h3>
-        <p>運営は沖縄でバルーン装飾を手がける株式会社DAYS。バルーンは外注せず自社で膨らませるので、同じ金額でも華やかさが違います。</p>
-      </div>
-      <div>
-        <h3>南部は当日、本島は翌日</h3>
-        <p>糸満市西崎の工房から自分たちで運びます。那覇・豊見城・糸満・南風原・八重瀬・与那原・南城は12時までのご注文で当日お届け。</p>
-      </div>
-      <div>
-        <h3>届いたら、写真がLINEに届く</h3>
-        <p>設置した状態を撮って、その場でお送りします。県外からのご注文でも、ちゃんと届いたことがすぐわかります。</p>
-      </div>
-      <div>
-        <h3>回収まで、こちらの仕事</h3>
-        <p>お花が終わる頃に回収に伺います。贈り主さまもお届け先さまも、あとの手配はいりません。</p>
-      </div>
-      <div>
-        <h3>法人さまは請求書払い・インボイス対応</h3>
-        <p>月末まとめ払い、適格請求書の発行、複数基のまとめ注文に対応。担当者さまはLINE1本で完結します。</p>
-      </div>
+      <div><div class="en">Balloon × Flower</div><h3>バルーン装飾の会社がつくる花のスタンド</h3><p>バルーンは外注せず自社で膨らませるので、同じ金額でも華やかさが違います。</p></div>
+      <div><div class="en">Same Day</div><h3>南部は当日、本島は翌日</h3><p>那覇・豊見城・糸満・南風原・八重瀬・与那原・南城は12時までのご注文で当日お届け。</p></div>
+      <div><div class="en">Photo</div><h3>届いたら、写真がLINEに届く</h3><p>設置した状態を撮って、その場でお送りします。県外からのご注文でも、届いたことがすぐわかります。</p></div>
+      <div><div class="en">Pick-up</div><h3>回収まで、こちらの仕事</h3><p>お花が終わる頃に回収に伺います。贈り主さまもお届け先さまも、あとの手配はいりません。</p></div>
+      <div><div class="en">For Business</div><h3>請求書払い・インボイス対応</h3><p>月末まとめ払い、適格請求書の発行、複数基のまとめ注文に対応。担当者さまはLINE1本で完結します。</p></div>
+      <div><div class="en">Simple</div><h3>プランは3つ、胡蝶蘭は2つ</h3><p>迷わないように絞りました。予算を押して立札の文字を送るだけで注文が終わります。</p></div>
     </div>
   </div>
 </section>
 
-<!-- ================= 受け取る側 ================= -->
-<section class="owner" id="owner">
+<!-- ================= OWNER ================= -->
+<section id="owner" class="owner fadein">
   <div class="wrap">
-    <h2>これから開店するお店の方へ</h2>
-    <p class="lead">お祝いの花は、届いたあとが意外と大変です。開店準備のついでに、こちらもご相談ください。</p>
-    <div class="box">
-      <h3>届いたスタンド花の撤去・引き取り</h3>
-      <p>ハレスタのスタンドは無料で回収。他店から届いたスタンド花も、南部エリアなら1基¥2,200で引き取ります。</p>
+    <h2 class="ttl">For Owners<small>これから開店するお店の方へ</small></h2>
+    <div class="cols">
+      <div class="box"><h3>届いたスタンド花の撤去・引き取り</h3><p>ハレスタのスタンドは無料で回収。他店から届いたスタンド花も南部エリアなら引き取ります。</p><div class="price">¥2,200 <span style="font-family:var(--sans);font-size:11px;color:var(--mute)">/ 1基</span></div></div>
+      <div class="box"><h3>お祝いへのお返し</h3><p>お花を贈ってくれた方へ、お礼のミニアレンジをまとめてお届け。宛先リストを送るだけ。</p><div class="price">¥3,300〜</div></div>
+      <div class="box"><h3>オープン当日の店頭バルーン</h3><p>入口のバルーンアーチや数字バルーンは、株式会社DAYSのバルーン部門がそのまま承ります。</p><div class="price">ご相談</div></div>
     </div>
-    <div class="box">
-      <h3>お祝いへのお返し</h3>
-      <p>お花を贈ってくれた方へ、お礼のミニアレンジ（¥3,300〜）をまとめてお届けします。宛先リストを送るだけ。</p>
-    </div>
-    <div class="box">
-      <h3>オープン当日の店頭バルーン</h3>
-      <p>入口のバルーンアーチや数字バルーンは、株式会社DAYSのバルーン部門がそのまま承ります。</p>
-    </div>
-    <a class="btn btn-ghost" href="https://lin.ee/XXXXXXX" rel="noopener">開店側の相談もLINEで</a>
   </div>
 </section>
 
-<!-- ================= GALLERY（写真が揃ったら hidden を外す） ================= -->
-<section class="gallery" id="gallery" hidden>
-  <div class="wrap">
-    <h2>お届けした祝い花</h2>
-    <p class="lead">那覇・南部の店先で撮影した納品写真です。</p>
-    <div class="shots">
-      <!-- <img src="/images/01.jpg" alt="那覇市 美容室の開店祝い ハレハレ" loading="lazy"> -->
-    </div>
+<!-- ================= GALLERY（写真が揃ったら <img> に差し替え） ================= -->
+<section class="gallery fadein" id="gallery">
+  <h2 class="ttl">Gallery</h2>
+  <div class="strip">
+    <div>COMING SOON</div><div>COMING SOON</div><div>COMING SOON</div><div>COMING SOON</div>
   </div>
 </section>
 
 <!-- ================= AREA ================= -->
-<section id="area">
+<section id="area" class="fadein">
   <div class="wrap">
-    <h2>お届けエリア</h2>
-    <ul class="area-list">
+    <h2 class="ttl">Area<small>お届けエリア</small></h2>
+    <ul class="areas">
       <li class="today">那覇市</li><li class="today">豊見城市</li><li class="today">糸満市</li><li class="today">南風原町</li><li class="today">八重瀬町</li><li class="today">与那原町</li><li class="today">南城市</li>
       <li>浦添市</li><li>宜野湾市</li><li>西原町</li><li>北中城村</li><li>中城村</li><li>沖縄市</li><li>北谷町</li><li>うるま市</li><li>読谷村</li><li>嘉手納町</li>
     </ul>
-    <p class="legend"><i></i>赤は12時までのご注文で当日お届け。その他は前日17時までのご注文で翌日お届け（配達料¥2,200）。北部・離島はご相談ください。</p>
+    <p class="note">赤は12時までのご注文で当日お届け。その他は前日17時までのご注文で翌日お届け（配達料¥2,200）。北部・離島はご相談ください。</p>
   </div>
 </section>
 
 <!-- ================= FLOW ================= -->
-<section class="plans" id="flow">
+<section id="flow" class="fadein">
   <div class="wrap">
-    <h2>ご注文の流れ</h2>
+    <h2 class="ttl">How to Order<small>ご注文の流れ</small></h2>
     <ol class="flow">
-      <li><div><b>LINEで送る</b><p>お届け先・日時・ご予算（プラン）・立札の文字。写真や雰囲気の希望があれば一緒に。</p></div></li>
-      <li><div><b>折り返しで確定</b><p>10分以内に内容と金額をお返しします。お支払いは決済リンク・振込・請求書から選べます。</p></div></li>
+      <li><div><b>LINEで送る</b><p>お届け先・日時・プラン・立札の文字。雰囲気の希望があれば一緒に。</p></div></li>
+      <li><div><b>折り返しで確定</b><p>10分以内に内容と金額をお返しします。お支払いは決済リンク・振込・請求書から。</p></div></li>
       <li><div><b>お届け・写真</b><p>指定の時間に設置して、その場の写真をLINEへ。</p></div></li>
       <li><div><b>回収</b><p>お花が終わる頃に回収に伺います（無料）。</p></div></li>
     </ol>
@@ -449,47 +462,75 @@ footer .links a{text-decoration:none;font-weight:700}
 </section>
 
 <!-- ================= FAQ ================= -->
-<section class="faq" id="faq">
+<section id="faq" class="fadein">
   <div class="wrap">
-    <h2>よくある質問</h2>
-    <details><summary>当日に届けてもらえますか？</summary><p>那覇・豊見城・糸満・南風原・八重瀬・与那原・南城は、12時までのご注文で当日お届けします。それ以外の本島エリアは前日17時までにご注文ください。</p></details>
-    <details><summary>県外から沖縄のお店に贈れますか？</summary><p>はい。LINEで注文内容と立札の文字をお送りいただければ、納品後に写真をお届けします。請求書払い・クレジットカードに対応しています。</p></details>
-    <details><summary>スタンドの回収は必要ですか？</summary><p>ハレスタのスタンドは無料で回収します。お届け先に回収日をご案内するので、贈り主さまの手配は不要です。</p></details>
-    <details><summary>立札には何を書けばいいですか？</summary><p>「祝 御開店」などの表書きと、贈り主のお名前（会社名・肩書・氏名）をお送りください。迷う場合は用途を教えていただければこちらでご提案します。立札は無料です。</p></details>
-    <details><summary>支払い方法は？</summary><p>クレジットカード（決済リンク）、銀行振込、法人さまは請求書払いに対応しています。適格請求書（インボイス）を発行します。</p></details>
-    <details><summary>周年祝い・移転祝い・就任祝いにも使えますか？</summary><p>使えます。表書きを「祝 〇周年」「祝 御移転」「祝 御就任」に変えるだけで、スタンドも胡蝶蘭も同じ価格です。</p></details>
+    <h2 class="ttl">FAQ<small>よくある質問</small></h2>
+    <div class="faq">
+      <details><summary>当日に届けてもらえますか？</summary><p>那覇・豊見城・糸満・南風原・八重瀬・与那原・南城は、12時までのご注文で当日お届けします。それ以外の本島エリアは前日17時までにご注文ください。</p></details>
+      <details><summary>県外から沖縄のお店に贈れますか？</summary><p>はい。LINEで注文内容と立札の文字をお送りいただければ、納品後に写真をお届けします。請求書払い・クレジットカードに対応しています。</p></details>
+      <details><summary>スタンドの回収は必要ですか？</summary><p>ハレスタのスタンドは無料で回収します。お届け先に回収日をご案内するので、贈り主さまの手配は不要です。</p></details>
+      <details><summary>立札には何を書けばいいですか？</summary><p>「祝 御開店」などの表書きと、贈り主のお名前（会社名・肩書・氏名）をお送りください。迷う場合は用途を教えていただければこちらでご提案します。立札は無料です。</p></details>
+      <details><summary>支払い方法は？</summary><p>クレジットカード（決済リンク）、銀行振込、法人さまは請求書払いに対応しています。適格請求書（インボイス）を発行します。</p></details>
+      <details><summary>周年祝い・移転祝い・就任祝いにも使えますか？</summary><p>使えます。表書きを「祝 〇周年」「祝 御移転」「祝 御就任」に変えるだけで、スタンドも胡蝶蘭も同じ価格です。</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="contact fadein">
+  <div class="wrap">
+    <h2 class="ttl">Contact<small>ご注文・お問い合わせ</small></h2>
+    <a class="btn" href="https://lin.ee/XXXXXXX" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 5.7 2 10.3c0 4.1 3.6 7.5 8.5 8.2.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.9-3.5 8-6c1.5-1.6 2.2-3.3 2.2-5.1C22 5.7 17.5 2 12 2z"/></svg>
+      LINEで注文する
+    </a>
+    <a class="tel" href="tel:09082929414">090-8292-9414<small>9:00〜18:00 ／ 年中無休</small></a>
   </div>
 </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <a class="brand" href="/"><span class="ja">ハレスタ</span><span class="en">HARE STAND</span></a>
+    <div class="logo">
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="31" fill="none" stroke="#fff" stroke-width="1.5"/><rect x="24" y="14" width="16" height="36" rx="1.5" fill="#FFFCF4"/><rect x="24" y="14" width="16" height="3.5" fill="#C9A24B"/><text x="32" y="38" text-anchor="middle" font-family="serif" font-weight="700" font-size="15" fill="#D8382E">祝</text></svg>
+      <span class="name" style="color:#fff">HARE STAND<small>ハレスタ</small></span>
+    </div>
     <address>
       沖縄県糸満市西崎（番地は公開前に差し替え）<br>
       株式会社DAYS 祝い花部門<br>
-      <a href="tel:09082929414">090-8292-9414</a>（9:00〜18:00）<br>
       <a href="mailto:info@days-balloon.com">info@days-balloon.com</a>
     </address>
     <div class="links">
       <a href="https://daysballoon.jp/" rel="noopener">DAYS Balloon</a>
-      <a href="https://days-flower.com/" rel="noopener">DAYS Flower（プロポーズの薔薇）</a>
+      <a href="https://days-flower.com/" rel="noopener">DAYS Flower</a>
     </div>
-    <p style="margin-top:16px;font-size:.78rem">© 2026 株式会社DAYS</p>
+    <p class="copy">© 2026 DAYS CO., LTD.</p>
   </div>
 </footer>
 
 <div class="bar">
   <div class="wrap">
-    <a class="btn btn-line" href="https://lin.ee/XXXXXXX" rel="noopener">
+    <a class="go" href="https://lin.ee/XXXXXXX" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 5.7 2 10.3c0 4.1 3.6 7.5 8.5 8.2.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.9-3.5 8-6c1.5-1.6 2.2-3.3 2.2-5.1C22 5.7 17.5 2 12 2z"/></svg>
       LINEで注文する
     </a>
     <a class="call" href="tel:09082929414" aria-label="電話する">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#1B2A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8.1 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.6 2.6.7a2 2 0 0 1 1.7 2z"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8.1 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.6 2.6.7a2 2 0 0 1 1.7 2z"/></svg>
     </a>
   </div>
 </div>
 
+<script>
+(function(){
+  var b=document.querySelector('.burger'),m=document.getElementById('menu');
+  function set(o){b.setAttribute('aria-expanded',o);m.dataset.open=o;document.body.style.overflow=o?'hidden':''}
+  b.addEventListener('click',function(){set(b.getAttribute('aria-expanded')!=='true')});
+  m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){set(false)})});
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px'});
+    document.querySelectorAll('.fadein').forEach(function(el){io.observe(el)});
+  }else{document.querySelectorAll('.fadein').forEach(function(el){el.classList.add('in')})}
+})();
+</script>
 </body>
 </html>
