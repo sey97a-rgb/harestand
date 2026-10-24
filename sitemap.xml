@@ -1,4 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://harestand.com/</loc><lastmod>2026-10-23</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://harestand.com/</loc><lastmod>2026-10-24</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://harestand.com/kaiten-iwai/</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://harestand.com/shunen-iwai/</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://harestand.com/iten-iwai/</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://harestand.com/shunin-iwai/</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://harestand.com/kaiin-iwai/</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://harestand.com/kochoran/</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://harestand.com/area/naha/</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://harestand.com/area/tomigusuku/</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://harestand.com/area/itoman/</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://harestand.com/area/haebaru/</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://harestand.com/area/yaese/</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://harestand.com/area/yonabaru/</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://harestand.com/area/nanjo/</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://harestand.com/guide/tatefuda/</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://harestand.com/guide/souba/</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://harestand.com/guide/itsumade/</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://harestand.com/guide/kaishu/</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://harestand.com/guide/manner/</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>

@@ -12,3 +12,8 @@
 
 ## デプロイ
 Netlify × GitHub 自動デプロイ。main に push すると反映。
+
+## 下層ページの更新
+- 文章・価格は `build/content.py`、見た目は `build/build.py` で管理
+- 変更後に `python3 build/build.py` を実行すると、用途・エリア・ガイドの全ページと sitemap.xml が再生成される
+- トップ（index.html）の CSS・ヘッダー・フッターを下層が自動で引き継ぐ

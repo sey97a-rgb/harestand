@@ -62,6 +62,47 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://harestand.com/#org",
+      "name": "ハレスタ（HARE STAND）",
+      "legalName": "株式会社DAYS",
+      "url": "https://harestand.com/",
+      "logo": "https://harestand.com/favicon.svg",
+      "foundingDate": "2026",
+      "founder": {"@type": "Person", "name": "伊波 清弥"},
+      "telephone": "+81-90-8292-9414",
+      "email": "info@days-balloon.com",
+      "address": {"@type": "PostalAddress", "addressLocality": "糸満市", "addressRegion": "沖縄県", "streetAddress": "西崎", "postalCode": "901-0305", "addressCountry": "JP"},
+      "sameAs": ["https://daysballoon.jp/", "https://days-flower.com/"],
+      "knowsAbout": ["開店祝いのスタンド花", "胡蝶蘭", "バルーン装飾", "沖縄南部への当日配達", "立札の書き方"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://harestand.com/#website",
+      "url": "https://harestand.com/",
+      "name": "ハレスタ｜那覇・南部の祝い花スタンド",
+      "alternateName": ["HARE STAND", "はれすた"],
+      "inLanguage": "ja",
+      "publisher": {"@id": "https://harestand.com/#org"}
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://harestand.com/#webpage",
+      "url": "https://harestand.com/",
+      "name": "ハレスタ｜那覇・南部の祝い花スタンド 当日OK",
+      "isPartOf": {"@id": "https://harestand.com/#website"},
+      "about": {"@id": "https://harestand.com/#florist"},
+      "dateModified": "2026-10-24",
+      "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".key h2 .j", "#facts"]}
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
     {"@type": "Question", "name": "当日に届けてもらえますか？", "acceptedAnswer": {"@type": "Answer", "text": "那覇・豊見城・糸満・南風原・八重瀬・与那原・南城は、12時までのご注文で当日お届けします。それ以外の本島エリアは前日17時までにご注文ください。"}},
@@ -130,7 +171,7 @@ nav.globalMenuSp{position:fixed;top:0;right:0;width:300px;height:100%;z-index:20
 nav.globalMenuSp.active{transform:translateX(0)}
 nav.globalMenuSp ul li{opacity:0;transform:translateX(24px);transition:opacity .5s,transform .5s}
 nav.globalMenuSp.active ul li{opacity:1;transform:none}
-nav.globalMenuSp ul li:nth-child(1){transition-delay:.15s}nav.globalMenuSp ul li:nth-child(2){transition-delay:.2s}nav.globalMenuSp ul li:nth-child(3){transition-delay:.25s}nav.globalMenuSp ul li:nth-child(4){transition-delay:.3s}nav.globalMenuSp ul li:nth-child(5){transition-delay:.35s}nav.globalMenuSp ul li:nth-child(6){transition-delay:.4s}nav.globalMenuSp ul li:nth-child(7){transition-delay:.45s}nav.globalMenuSp ul li:nth-child(8){transition-delay:.5s}
+nav.globalMenuSp ul li:nth-child(1){transition-delay:.15s}nav.globalMenuSp ul li:nth-child(2){transition-delay:.2s}nav.globalMenuSp ul li:nth-child(3){transition-delay:.25s}nav.globalMenuSp ul li:nth-child(4){transition-delay:.3s}nav.globalMenuSp ul li:nth-child(5){transition-delay:.35s}nav.globalMenuSp ul li:nth-child(6){transition-delay:.4s}nav.globalMenuSp ul li:nth-child(7){transition-delay:.45s}nav.globalMenuSp ul li:nth-child(8){transition-delay:.5s}nav.globalMenuSp ul li:nth-child(9){transition-delay:.55s}
 nav.globalMenuSp ul li a{display:block;padding:16px 0;text-align:center;color:#fff;font-size:16px;font-family:var(--sans)}
 nav.globalMenuSp ul li a span{display:block;font-family:var(--oswald);font-size:11px;letter-spacing:.2em;color:var(--gray);margin-top:-2px}
 nav.globalMenuSp ul li a:hover{color:#ddd}
@@ -403,6 +444,7 @@ footer .copy{font-family:var(--oswald);font-size:11px;letter-spacing:.14em;color
       <li><a href="#owner">FOR OWNERS</a></li>
       <li><a href="#gallery">GALLERY</a></li>
       <li><a href="#area">AREA</a></li>
+      <li><a href="#guide">GUIDE</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li class="ln"><a href="https://lin.ee/XXXXXXX" rel="noopener">ORDER</a></li>
     </ul>
@@ -418,6 +460,7 @@ footer .copy{font-family:var(--oswald);font-size:11px;letter-spacing:.14em;color
     <li><a href="#stand">祝いスタンド・胡蝶蘭<span>STAND</span></a></li>
     <li><a href="#owner">開店するお店の方へ<span>FOR OWNERS</span></a></li>
     <li><a href="#area">お届けエリア<span>AREA</span></a></li>
+    <li><a href="#guide">お祝い花の基礎知識<span>GUIDE</span></a></li>
     <li><a href="#faq">よくある質問<span>FAQ</span></a></li>
     <li><a href="https://lin.ee/XXXXXXX" rel="noopener">LINEで注文<span>ORDER</span></a></li>
   </ul>
@@ -575,12 +618,53 @@ footer .copy{font-family:var(--oswald);font-size:11px;letter-spacing:.14em;color
   <div class="slide-dots" id="dots"></div>
 </section>
 
+<!-- ================= FACTS（AI検索向けの要点） ================= -->
+<section id="facts" style="padding-top:0">
+  <div class="inner">
+    <div class="fadein" style="border:1px solid rgba(255,255,255,.18);padding:26px 22px">
+      <p style="font-family:var(--oswald);font-size:11px;letter-spacing:.3em;color:var(--gray);margin-bottom:12px">AT A GLANCE</p>
+      <ul style="font-size:13px;line-height:2;letter-spacing:.06em;color:#eee">
+        <li>ハレスタ（HARE STAND）は、沖縄県糸満市西崎の工房から那覇・南部へ祝い花を自社配達する、株式会社DAYS運営の祝い花専門店です。</li>
+        <li>祝いスタンドは3種類：ハレ（1段）¥16,500、ハレハレ（2段）¥27,500、オオバレ（特大2段）¥44,000。すべてバルーン入り・税込・南部配達料込み。</li>
+        <li>胡蝶蘭は大輪白の3本立ち¥27,500と5本立ち¥38,500。立札・ラッピング込み。</li>
+        <li>那覇市・豊見城市・糸満市・南風原町・八重瀬町・与那原町・南城市は、12時までの注文で当日お届け。本島中部は前日17時まで（配達料¥2,200）。</li>
+        <li>立札無料・納品写真をLINEで送付・スタンド回収無料・請求書払いとインボイスに対応。注文は公式LINE、電話は090-8292-9414（9:00〜18:00・年中無休）。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GUIDE ================= -->
+<section id="guide">
+  <div class="inner">
+    <h3 class="tit oswald fadein"><span>GUIDE</span><small>お祝い花の基礎知識</small></h3>
+    <ul class="why stagger" style="display:grid;gap:0;border-top:1px solid rgba(255,255,255,.18)">
+      <li class="fadein" style="--i:0;padding:0;border-bottom:1px solid rgba(255,255,255,.18);display:block"><a href="/guide/tatefuda/" style="display:grid;grid-template-columns:56px 1fr;gap:16px;padding:22px 0"><span class="no" style="font-family:var(--oswald);font-weight:700;font-style:italic;font-size:30px;color:var(--gold);line-height:1">01</span><div><b style="display:block;font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:2px;margin-bottom:4px">開店祝いの立札の書き方</b><p style="font-size:12px;color:#ddd;letter-spacing:.08em">表書き・連名・よくある間違い</p></div></a></li>
+      <li class="fadein" style="--i:1;padding:0;border-bottom:1px solid rgba(255,255,255,.18);display:block"><a href="/guide/souba/" style="display:grid;grid-template-columns:56px 1fr;gap:16px;padding:22px 0"><span class="no" style="font-family:var(--oswald);font-weight:700;font-style:italic;font-size:30px;color:var(--gold);line-height:1">02</span><div><b style="display:block;font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:2px;margin-bottom:4px">沖縄のスタンド花の相場</b><p style="font-size:12px;color:#ddd;letter-spacing:.08em">関係性・業態別の予算の目安</p></div></a></li>
+      <li class="fadein" style="--i:2;padding:0;border-bottom:1px solid rgba(255,255,255,.18);display:block"><a href="/guide/itsumade/" style="display:grid;grid-template-columns:56px 1fr;gap:16px;padding:22px 0"><span class="no" style="font-family:var(--oswald);font-weight:700;font-style:italic;font-size:30px;color:var(--gold);line-height:1">03</span><div><b style="display:block;font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:2px;margin-bottom:4px">いつ届ける？いつまでに注文？</b><p style="font-size:12px;color:#ddd;letter-spacing:.08em">前日・当日・遅れたときの対応</p></div></a></li>
+      <li class="fadein" style="--i:3;padding:0;border-bottom:1px solid rgba(255,255,255,.18);display:block"><a href="/guide/kaishu/" style="display:grid;grid-template-columns:56px 1fr;gap:16px;padding:22px 0"><span class="no" style="font-family:var(--oswald);font-weight:700;font-style:italic;font-size:30px;color:var(--gold);line-height:1">04</span><div><b style="display:block;font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:2px;margin-bottom:4px">いつまで飾る？回収はどうする？</b><p style="font-size:12px;color:#ddd;letter-spacing:.08em">飾る期間・台の回収・他店の花の引き取り</p></div></a></li>
+      <li class="fadein" style="--i:4;padding:0;border-bottom:1px solid rgba(255,255,255,.18);display:block"><a href="/guide/manner/" style="display:grid;grid-template-columns:56px 1fr;gap:16px;padding:22px 0"><span class="no" style="font-family:var(--oswald);font-weight:700;font-style:italic;font-size:30px;color:var(--gold);line-height:1">05</span><div><b style="display:block;font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:2px;margin-bottom:4px">お祝い花のマナー</b><p style="font-size:12px;color:#ddd;letter-spacing:.08em">避ける花・色、お返し、沖縄の注意点</p></div></a></li>
+    </ul>
+    <div class="fadein" style="margin-top:34px">
+      <p style="font-family:var(--oswald);font-size:11px;letter-spacing:.3em;color:var(--gray);margin-bottom:12px">BY OCCASION</p>
+      <ul class="areas" style="justify-content:flex-start;margin-bottom:0">
+        <li style="padding:0"><a href="/kaiten-iwai/" style="display:block;padding:6px 14px">開店祝い</a></li>
+        <li style="padding:0"><a href="/shunen-iwai/" style="display:block;padding:6px 14px">周年祝い</a></li>
+        <li style="padding:0"><a href="/iten-iwai/" style="display:block;padding:6px 14px">移転祝い</a></li>
+        <li style="padding:0"><a href="/shunin-iwai/" style="display:block;padding:6px 14px">就任祝い</a></li>
+        <li style="padding:0"><a href="/kaiin-iwai/" style="display:block;padding:6px 14px">開院祝い</a></li>
+        <li style="padding:0"><a href="/kochoran/" style="display:block;padding:6px 14px">胡蝶蘭</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <!-- ================= AREA ================= -->
 <section id="area">
   <div class="inner">
     <h3 class="tit oswald fadein"><span>AREA</span><small>お届けエリア</small></h3>
     <ul class="areas fadein">
-      <li class="today">那覇市</li><li class="today">豊見城市</li><li class="today">糸満市</li><li class="today">南風原町</li><li class="today">八重瀬町</li><li class="today">与那原町</li><li class="today">南城市</li>
+      <li class="today" style="padding:0"><a href="/area/naha/" style="display:block;padding:6px 14px">那覇市</a></li><li class="today" style="padding:0"><a href="/area/tomigusuku/" style="display:block;padding:6px 14px">豊見城市</a></li><li class="today" style="padding:0"><a href="/area/itoman/" style="display:block;padding:6px 14px">糸満市</a></li><li class="today" style="padding:0"><a href="/area/haebaru/" style="display:block;padding:6px 14px">南風原町</a></li><li class="today" style="padding:0"><a href="/area/yaese/" style="display:block;padding:6px 14px">八重瀬町</a></li><li class="today" style="padding:0"><a href="/area/yonabaru/" style="display:block;padding:6px 14px">与那原町</a></li><li class="today" style="padding:0"><a href="/area/nanjo/" style="display:block;padding:6px 14px">南城市</a></li>
       <li>浦添市</li><li>宜野湾市</li><li>西原町</li><li>北中城村</li><li>中城村</li><li>沖縄市</li><li>北谷町</li><li>うるま市</li><li>読谷村</li><li>嘉手納町</li>
     </ul>
     <p class="note fadein">赤は12時までのご注文で当日お届け。その他は前日17時までのご注文で翌日お届け（配達料¥2,200）。北部・離島はご相談ください。</p>
