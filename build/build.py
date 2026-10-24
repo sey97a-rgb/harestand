@@ -108,7 +108,7 @@ def cta():
 
 def related(exclude=None):
     items = [("祝いスタンド・胡蝶蘭の価格","/#stand")] + [(u["name"],f"/{u['slug']}/") for u in USES] + [("胡蝶蘭","/kochoran/")] \
-          + [(a["name"]+"への配達",f"/area/{a['slug']}/") for a in AREAS] + [(g["name"],f"/guide/{g['slug']}/") for g in GUIDES]
+          + [(b["name"],f"/yosan/{b['slug']}/") for b in BUDGETS] + [(a["name"]+"への配達",f"/area/{a['slug']}/") for a in AREAS] + [(g["name"],f"/guide/{g['slug']}/") for g in GUIDES]
     lis = "".join(f'<li><a href="{u}">{esc(n)}</a></li>' for n,u in items if u != exclude)
     return f'<div class="rel fadein"><h3>RELATED</h3><ul>{lis}</ul></div>'
 
@@ -253,6 +253,32 @@ for g in GUIDES:
 {related(url)}"""
     lds = [article_ld(g['title'], desc, url), faqld(g['faq']), breadcrumb([("HOME","/"),("ガイド","/#guide"),(g['name'],url)])]
     write(url, page(url, title, desc, g['en'], esc(g['h1']), "GUIDE · CELEBRATION FLOWERS", [("HOME","/"),("ガイド","/#guide"),(g['name'],None)], body, lds))
+    urls.append(url)
+
+# ---------- 予算ページ ----------
+for bgt in BUDGETS:
+    url = f"/yosan/{bgt['slug']}/"
+    title = f"{bgt['h1']}｜ハレスタ"
+    desc = bgt['lead'][:110]
+    picks = "".join(f'<div class="r"><div><b>{esc(n)}</b><small>{esc(w)}</small></div><div class="p">¥{p}<i>税込</i></div></div>' for n,p,w in bgt['pick'])
+    body = f"""
+<p class="lead fadein">{esc(bgt['lead'])}</p>
+<h2 class="fadein">{esc(bgt['name'])}で選ぶなら</h2>
+<div class="tbl fadein" style="grid-template-columns:1fr">{picks}</div>
+<p class="fadein">すべて税込。立札無料・納品写真・スタンド回収無料・南部7市町の配達料込み。</p>
+<h2 class="fadein">沖縄の相場との比較</h2>
+<p class="fadein">{esc(bgt['compare'])}</p>
+<h2 class="fadein">{esc(bgt['name'])}が選ばれる場面</h2>
+<ul class="dot fadein">{''.join(f'<li>{esc(w)}</li>' for w in bgt['who'])}</ul>
+<h2 class="fadein">全プランの価格</h2>
+<div class="fadein">{price_block()}</div>
+<h2 class="fadein">よくある質問</h2>
+<div class="faq fadein">{''.join(f'<details><summary>{esc(q)}</summary><p>{esc(a)}</p></details>' for q,a in bgt['faq'])}</div>
+{cta()}
+{related(url)}"""
+    lds = [service_ld(f"{bgt['name']}の開店祝いスタンド花（沖縄南部）", desc, url), faqld(bgt['faq']),
+           breadcrumb([("HOME","/"),("予算から探す","/#guide"),(bgt['name'],url)]), article_ld(bgt['h1'], desc, url)]
+    write(url, page(url, title, desc, bgt['en'], esc(bgt['h1']), f"{bgt['en']} · NAHA · SOUTH OKINAWA", [("HOME","/"),("予算から探す","/#guide"),(bgt['name'],None)], body, lds))
     urls.append(url)
 
 # ---------- sitemap ----------
