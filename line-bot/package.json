@@ -1,0 +1,9 @@
+{
+  "name": "harestand-line",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "description": "ハレスタ LINE自動応対ワーカー (Cloudflare Workers)",
+  "scripts": { "deploy": "wrangler deploy", "dry": "wrangler deploy --dry-run" },
+  "devDependencies": { "wrangler": "^4.151.0" }
+}

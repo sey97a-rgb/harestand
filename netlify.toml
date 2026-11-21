@@ -29,3 +29,8 @@
   from = "/build/*"
   to = "/404.html"
   status = 404
+
+[[redirects]]
+  from = "/line-bot/*"
+  to = "/404.html"
+  status = 404

@@ -1,0 +1,15 @@
+// ハレスタ LINE自動応対ワーカー — Cloudflare 用の設定ファイル
+// GitHub の main に push されると Cloudflare Workers Builds がこの設定で自動デプロイします（ルートは line-bot/）。
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "harestand-line",
+  "main": "worker.js",
+  "compatibility_date": "2026-08-29",
+  // ダッシュボードで登録した変数・Secret を消さない
+  "keep_vars": true,
+  "kv_namespaces": [
+    // Cloudflare の KV「harestand-kv」
+    { "binding": "HS_KV", "id": "23ad439e469e455988861dc26625a351" }
+  ],
+  "observability": { "enabled": true }
+}

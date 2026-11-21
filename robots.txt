@@ -1,6 +1,8 @@
 User-agent: *
 Allow: /
 Disallow: /build/
+Disallow: /line-bot/
+Disallow: /line/
 
 User-agent: GPTBot
 Allow: /
