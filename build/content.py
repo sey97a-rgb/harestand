@@ -3,7 +3,7 @@
 文章はページごとに固有。価格・締切など共通の事実は FACTS に一元化。"""
 
 SITE = "https://harestand.com"
-LINE = "https://lin.ee/Xuvqzq7"   # 注文窓口＝DAYS Flower 公式LINE（同じ株式会社DAYSが運営）
+LINE = "https://line.me/R/ti/p/@812ayeum"   # ハレスタ公式LINE（ベーシックID @812ayeum）
 TEL = "090-8292-9414"
 TEL_INTL = "+81-90-8292-9414"
 UPDATED = "2026-11-21"
@@ -16,7 +16,7 @@ COMPANY = dict(
     corp_no="5360001036291", invoice_no="T5360001036291",
     email="info@days-balloon.com",
     map="https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84%E7%9C%8C%E7%B3%B8%E6%BA%80%E5%B8%82%E8%A5%BF%E5%B4%8E2%E4%B8%81%E7%9B%AE36-7",
-    line_name="DAYS Flower",
+    line_name="ハレスタ",
 )
 
 FACTS = {

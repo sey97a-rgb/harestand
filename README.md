@@ -3,7 +3,7 @@
 那覇・南部の祝い花スタンド専門店のサイト。静的1ページ（index.html）。
 
 ## 連絡先（2026-11-21 確定）
-- 注文窓口：DAYS Flower 公式LINE `https://lin.ee/Xuvqzq7`（index.html と build/content.py の LINE）
+- 注文窓口：ハレスタ公式LINE `https://line.me/R/ti/p/@812ayeum`（@812ayeum）（index.html と build/content.py の LINE）
 - 住所：〒901-0305 沖縄県糸満市西崎2丁目36-7 コーポ西崎101（build/content.py の COMPANY）
 - AI向け：llms.txt（手書き）、llms-full.txt（build.py が自動生成）
 

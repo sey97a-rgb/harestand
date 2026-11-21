@@ -71,7 +71,7 @@ LINE_SVG = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><pat
 
 def esc(s): return html.escape(s, quote=True)
 
-LINE_NOTE = "ご注文窓口は「DAYS Flower」の公式LINEです（ハレスタと同じ株式会社DAYSが運営しています）。"
+LINE_NOTE = "ハレスタ公式LINE（ID：@812ayeum）で承ります。"
 
 def jsonld(obj): return '<script type="application/ld+json">\n' + json.dumps(obj, ensure_ascii=False, indent=1) + '\n</script>'
 
@@ -365,7 +365,7 @@ body = f"""
 <div class="tbl fadein" style="grid-template-columns:1fr">{rows}</div>
 <p class="fadein"><a href="{COMPANY['map']}" rel="noopener" style="text-decoration:underline">地図で見る（Googleマップ）</a></p>
 <h2 class="fadein">同じ会社が運営するサービス</h2>
-<ul class="dot fadein"><li><a href="https://daysballoon.jp/" rel="noopener" style="text-decoration:underline">DAYS Balloon</a>：県内のリゾートホテルと提携したサプライズ・プロポーズのバルーン装飾</li><li><a href="https://days-flower.com/" rel="noopener" style="text-decoration:underline">DAYS Flower</a>：プロポーズの薔薇と押し花加工。ハレスタのご注文窓口（公式LINE）も兼ねています</li></ul>
+<ul class="dot fadein"><li><a href="https://daysballoon.jp/" rel="noopener" style="text-decoration:underline">DAYS Balloon</a>：県内のリゾートホテルと提携したサプライズ・プロポーズのバルーン装飾</li><li><a href="https://days-flower.com/" rel="noopener" style="text-decoration:underline">DAYS Flower</a>：プロポーズの薔薇と押し花加工</li></ul>
 <h2 class="fadein">お約束していること</h2>
 <ul class="dot fadein"><li>表示価格はすべて税込。南部7市町への配達・立札・納品写真・スタンドの回収は価格に含みます</li><li>お届け後は設置した状態の写真をLINEでお送りします</li><li>法人さまには適格請求書（インボイス）を発行します</li></ul>
 {cta()}"""
@@ -381,7 +381,7 @@ L = [f"# ハレスタ（HARE STAND）— 全情報", "",
      f"- 運営：{COMPANY['legal']}／代表取締役 {COMPANY['ceo']}／設立 2026年1月20日",
      f"- 所在地（工房）：{COMPANY['full']}",
      f"- 電話：{TEL}（9:00〜18:00・年中無休）／メール：{COMPANY['email']}",
-     f"- ご注文窓口：{COMPANY['line_name']} 公式LINE {LINE}（同じ株式会社DAYSが運営）",
+     f"- ご注文窓口：ハレスタ公式LINE {LINE}（ID：@812ayeum）",
      f"- 法人番号：{COMPANY['corp_no']}／適格請求書発行事業者 登録番号：{COMPANY['invoice_no']}", "",
      "## 価格（すべて税込・バルーン入り・立札無料・納品写真・回収無料・南部配達料込み）"]
 L += [f"- 祝いスタンド {n}（{sz}）¥{p}：{w}" for n,sz,p,w in FACTS["plans"]]
