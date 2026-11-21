@@ -43,13 +43,16 @@
   "priceRange": "¥16,500〜¥44,000",
   "currenciesAccepted": "JPY",
   "paymentAccepted": "クレジットカード, 銀行振込, 請求書払い",
-  "address": {"@type": "PostalAddress","streetAddress": "西崎","addressLocality": "糸満市","addressRegion": "沖縄県","postalCode": "901-0305","addressCountry": "JP"},
+  "address": {"@type": "PostalAddress","streetAddress": "西崎2丁目36-7 コーポ西崎101","addressLocality": "糸満市","addressRegion": "沖縄県","postalCode": "901-0305","addressCountry": "JP"},
+  "hasMap": "https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84%E7%9C%8C%E7%B3%B8%E6%BA%80%E5%B8%82%E8%A5%BF%E5%B4%8E2%E4%B8%81%E7%9B%AE36-7",
+  "sameAs": ["https://lin.ee/Xuvqzq7"],
+  "potentialAction": {"@type": "OrderAction", "target": "https://lin.ee/Xuvqzq7", "name": "公式LINEで注文"},
   "areaServed": [
     {"@type": "City", "name": "那覇市"},{"@type": "City", "name": "豊見城市"},{"@type": "City", "name": "糸満市"},{"@type": "City", "name": "南城市"},
     {"@type": "City", "name": "南風原町"},{"@type": "City", "name": "八重瀬町"},{"@type": "City", "name": "与那原町"}
   ],
   "openingHoursSpecification": [{"@type": "OpeningHoursSpecification","dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens": "09:00","closes": "18:00"}],
-  "parentOrganization": {"@type": "Organization","name": "株式会社DAYS","url": "https://daysballoon.jp/"},
+  "parentOrganization": {"@id": "https://harestand.com/#org"},
   "hasOfferCatalog": {"@type": "OfferCatalog","name": "祝い花スタンド・胡蝶蘭","itemListElement": [
     {"@type": "Offer", "name": "祝いスタンド ハレ（1段・バルーン入り）", "price": "16500", "priceCurrency": "JPY"},
     {"@type": "Offer", "name": "祝いスタンド ハレハレ（2段・バルーン入り）", "price": "27500", "priceCurrency": "JPY"},
@@ -70,13 +73,15 @@
       "legalName": "株式会社DAYS",
       "url": "https://harestand.com/",
       "logo": "https://harestand.com/favicon.svg",
-      "foundingDate": "2026",
-      "founder": {"@type": "Person", "name": "伊波 清弥"},
+      "foundingDate": "2026-01-20",
+      "founder": {"@type": "Person", "name": "伊波 清弥", "jobTitle": "代表取締役"},
       "telephone": "+81-90-8292-9414",
       "email": "info@days-balloon.com",
-      "address": {"@type": "PostalAddress", "addressLocality": "糸満市", "addressRegion": "沖縄県", "streetAddress": "西崎", "postalCode": "901-0305", "addressCountry": "JP"},
-      "sameAs": ["https://daysballoon.jp/", "https://days-flower.com/"],
-      "knowsAbout": ["開店祝いのスタンド花", "胡蝶蘭", "バルーン装飾", "沖縄南部への当日配達", "立札の書き方"]
+      "address": {"@type": "PostalAddress", "addressLocality": "糸満市", "addressRegion": "沖縄県", "streetAddress": "西崎2丁目36-7 コーポ西崎101", "postalCode": "901-0305", "addressCountry": "JP"},
+      "identifier": [{"@type": "PropertyValue", "propertyID": "法人番号", "value": "5360001036291"}, {"@type": "PropertyValue", "propertyID": "適格請求書発行事業者登録番号", "value": "T5360001036291"}],
+      "contactPoint": [{"@type": "ContactPoint", "contactType": "ご注文・お問い合わせ", "telephone": "+81-90-8292-9414", "url": "https://lin.ee/Xuvqzq7", "availableLanguage": "ja", "areaServed": "JP"}],
+      "sameAs": ["https://daysballoon.jp/", "https://days-flower.com/", "https://lin.ee/Xuvqzq7"],
+      "knowsAbout": ["開店祝いのスタンド花", "胡蝶蘭", "バルーン装飾", "沖縄南部への当日配達", "立札の書き方", "お祝い花のマナー", "法人の祝い花と請求書払い"]
     },
     {
       "@type": "WebSite",
@@ -94,7 +99,7 @@
       "name": "ハレスタ｜那覇・南部の祝い花スタンド 当日OK",
       "isPartOf": {"@id": "https://harestand.com/#website"},
       "about": {"@id": "https://harestand.com/#florist"},
-      "dateModified": "2026-10-24",
+      "dateModified": "2026-11-21",
       "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".key h2 .j", "#facts"]}
     }
   ]
@@ -109,7 +114,8 @@
     {"@type": "Question", "name": "県外から沖縄のお店に贈れますか？", "acceptedAnswer": {"@type": "Answer", "text": "はい。LINEで注文内容と立札の文字をお送りいただければ、納品後に写真をお届けします。請求書払い・クレジットカードに対応しています。"}},
     {"@type": "Question", "name": "スタンドの回収は必要ですか？", "acceptedAnswer": {"@type": "Answer", "text": "ハレスタのスタンドは無料で回収します。お届け先に回収日をご案内するので、贈り主さまの手配は不要です。"}},
     {"@type": "Question", "name": "立札には何を書けばいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "「祝 御開店」などの表書きと、贈り主のお名前（会社名・肩書・氏名）をお送りください。迷う場合は用途を教えていただければこちらでご提案します。立札は無料です。"}},
-    {"@type": "Question", "name": "支払い方法は？", "acceptedAnswer": {"@type": "Answer", "text": "クレジットカード（決済リンク）、銀行振込、法人さまは請求書払いに対応しています。適格請求書（インボイス）を発行します。"}}
+    {"@type": "Question", "name": "支払い方法は？", "acceptedAnswer": {"@type": "Answer", "text": "クレジットカード（決済リンク）、銀行振込、法人さまは請求書払いに対応しています。適格請求書（インボイス）を発行します。"}},
+    {"@type": "Question", "name": "LINEを開くと「DAYS Flower」と表示されますが、注文先は合っていますか？", "acceptedAnswer": {"@type": "Answer", "text": "はい、合っています。ハレスタのご注文は、同じ株式会社DAYSが運営する「DAYS Flower」の公式LINEで承っています。友だち追加のうえ、「ハレスタの注文」と送ってください。"}}
   ]
 }
 </script>
@@ -370,7 +376,7 @@ body.anim .key .scr{animation-delay:4.2s}
 footer{border-top:1px solid #b3b3b3;padding:40px 20px 50px;text-align:center}
 footer .lm{width:64px;height:64px;margin:0 auto 14px}
 footer address{font-style:normal;font-size:11px;letter-spacing:.1em;color:#ccc;line-height:1.9;margin-bottom:14px}
-footer .links{display:flex;justify-content:center;gap:20px;font-family:var(--oswald);font-size:11px;letter-spacing:.2em;margin-bottom:22px}
+footer .links{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 20px;font-family:var(--oswald);font-size:11px;letter-spacing:.2em;margin-bottom:22px}
 footer .copy{font-family:var(--oswald);font-size:11px;letter-spacing:.14em;color:var(--gray)}
 .to_top{position:fixed;right:4%;bottom:3%;width:35px;height:35px;border-radius:19%;background:rgba(46,44,39,.9);z-index:9;display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .4s}
 .to_top.show{opacity:1;pointer-events:auto}
@@ -446,7 +452,7 @@ footer .copy{font-family:var(--oswald);font-size:11px;letter-spacing:.14em;color
       <li><a href="#area">AREA</a></li>
       <li><a href="#guide">GUIDE</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li class="ln"><a href="https://lin.ee/XXXXXXX" rel="noopener">ORDER</a></li>
+      <li class="ln"><a href="https://lin.ee/Xuvqzq7" rel="noopener">ORDER</a></li>
     </ul>
   </div>
 </header>
@@ -462,7 +468,7 @@ footer .copy{font-family:var(--oswald);font-size:11px;letter-spacing:.14em;color
     <li><a href="#area">お届けエリア<span>AREA</span></a></li>
     <li><a href="#guide">お祝い花の基礎知識<span>GUIDE</span></a></li>
     <li><a href="#faq">よくある質問<span>FAQ</span></a></li>
-    <li><a href="https://lin.ee/XXXXXXX" rel="noopener">LINEで注文<span>ORDER</span></a></li>
+    <li><a href="https://lin.ee/Xuvqzq7" rel="noopener">LINEで注文<span>ORDER</span></a></li>
   </ul>
 </nav>
 
@@ -496,7 +502,7 @@ footer .copy{font-family:var(--oswald);font-size:11px;letter-spacing:.14em;color
       <li class="fadein" style="--i:0"><a href="#stand"><div class="th g1"><div class="tb"><span>祝御開店</span></div></div><time>2026/10/23</time>ハレスタ 公式サイトを公開しました</a></li>
       <li class="fadein" style="--i:1"><a href="#area"><div class="th g2"><div class="tb"><span>当日配達</span></div></div><time>2026/10/23</time>那覇・南部7市町で当日お届けを開始</a></li>
       <li class="fadein" style="--i:2"><a href="#stand"><div class="th g3"><div class="tb"><span>胡蝶蘭</span></div></div><time>2026/10/23</time>胡蝶蘭 3本立ち・5本立ちの取り扱いを開始</a></li>
-      <li class="fadein" style="--i:3"><a href="https://lin.ee/XXXXXXX" rel="noopener"><div class="th g4"><div class="tb"><span class="en">LINE</span></div></div><time>2026/10/23</time>公式LINEでのご注文を受付中</a></li>
+      <li class="fadein" style="--i:3"><a href="https://lin.ee/Xuvqzq7" rel="noopener"><div class="th g4"><div class="tb"><span class="en">LINE</span></div></div><time>2026/10/23</time>公式LINEでのご注文を受付中</a></li>
     </ul>
   </div>
 </section>
@@ -540,7 +546,7 @@ footer .copy{font-family:var(--oswald);font-size:11px;letter-spacing:.14em;color
         <div class="price">¥16,500<small>税込・南部配達料込</small></div>
         <ul class="spec"><li>バルーン入り</li><li>立札 無料</li><li>納品写真</li><li>回収 無料</li></ul>
         <p>美容室・サロン・小さなカフェの開店祝いに。入口に置いてちょうどいい大きさで、店先の写真にきれいに収まります。</p>
-        <a class="go" href="https://lin.ee/XXXXXXX" rel="noopener">ORDER ON LINE</a>
+        <a class="go" href="https://lin.ee/Xuvqzq7" rel="noopener">ORDER ON LINE</a>
       </dd>
     </dl>
 
@@ -552,7 +558,7 @@ footer .copy{font-family:var(--oswald);font-size:11px;letter-spacing:.14em;color
         <div class="price">¥27,500<small>税込・南部配達料込</small></div>
         <ul class="spec"><li>バルーン入り</li><li>立札 無料</li><li>納品写真</li><li>回収 無料</li></ul>
         <p>飲食店・クリニック・事務所の開店祝いの定番。2段ぶんのボリュームにバルーンが加わって、並んだ花の中でもはっきり目に入ります。</p>
-        <a class="go" href="https://lin.ee/XXXXXXX" rel="noopener">ORDER ON LINE</a>
+        <a class="go" href="https://lin.ee/Xuvqzq7" rel="noopener">ORDER ON LINE</a>
       </dd>
     </dl>
 
@@ -564,14 +570,14 @@ footer .copy{font-family:var(--oswald);font-size:11px;letter-spacing:.14em;color
         <div class="price">¥44,000<small>税込・南部配達料込</small></div>
         <ul class="spec"><li>バルーン入り</li><li>立札 無料</li><li>納品写真</li><li>回収 無料</li></ul>
         <p>グランドオープン・竣工・周年記念に。会場でいちばん目立たせたいときの一台です。</p>
-        <a class="go" href="https://lin.ee/XXXXXXX" rel="noopener">ORDER ON LINE</a>
+        <a class="go" href="https://lin.ee/Xuvqzq7" rel="noopener">ORDER ON LINE</a>
       </dd>
     </dl>
 
     <h3 class="tit oswald fadein" style="margin-top:90px"><span>ORCHID</span><small>胡蝶蘭</small></h3>
     <div class="orchid fadein">
-      <a href="https://lin.ee/XXXXXXX" rel="noopener"><div class="en">3 STEMS</div><div class="n">胡蝶蘭 3本立ち</div><div class="price">¥27,500</div><small>大輪白・30輪前後・立札つき</small></a>
-      <a href="https://lin.ee/XXXXXXX" rel="noopener"><div class="en">5 STEMS</div><div class="n">胡蝶蘭 5本立ち</div><div class="price">¥38,500</div><small>大輪白・50輪前後・立札つき</small></a>
+      <a href="https://lin.ee/Xuvqzq7" rel="noopener"><div class="en">3 STEMS</div><div class="n">胡蝶蘭 3本立ち</div><div class="price">¥27,500</div><small>大輪白・30輪前後・立札つき</small></a>
+      <a href="https://lin.ee/Xuvqzq7" rel="noopener"><div class="en">5 STEMS</div><div class="n">胡蝶蘭 5本立ち</div><div class="price">¥38,500</div><small>大輪白・50輪前後・立札つき</small></a>
     </div>
     <p class="note fadein">就任・開院・落成など格式が要るときに。仕入れの都合で前日12時までのご注文をお願いしています。<br>お花の種類と色はお任せが基本。「赤系で」「白と緑で上品に」など雰囲気のご希望は反映します。</p>
   </div>
@@ -628,7 +634,8 @@ footer .copy{font-family:var(--oswald);font-size:11px;letter-spacing:.14em;color
         <li>祝いスタンドは3種類：ハレ（1段）¥16,500、ハレハレ（2段）¥27,500、オオバレ（特大2段）¥44,000。すべてバルーン入り・税込・南部配達料込み。</li>
         <li>胡蝶蘭は大輪白の3本立ち¥27,500と5本立ち¥38,500。立札・ラッピング込み。</li>
         <li>那覇市・豊見城市・糸満市・南風原町・八重瀬町・与那原町・南城市は、12時までの注文で当日お届け。本島中部は前日17時まで（配達料¥2,200）。</li>
-        <li>立札無料・納品写真をLINEで送付・スタンド回収無料・請求書払いとインボイスに対応。注文は公式LINE、電話は090-8292-9414（9:00〜18:00・年中無休）。</li>
+        <li>立札無料・納品写真をLINEで送付・スタンド回収無料・請求書払いとインボイス（登録番号 T5360001036291）に対応。注文は公式LINE（DAYS Flower名義・同じ株式会社DAYSが運営）、電話は090-8292-9414（9:00〜18:00・年中無休）。</li>
+        <li>所在地（工房）：〒901-0305 沖縄県糸満市西崎2丁目36-7 コーポ西崎101。運営：株式会社DAYS（代表取締役 伊波清弥）。</li>
       </ul>
     </div>
   </div>
@@ -644,7 +651,12 @@ footer .copy{font-family:var(--oswald);font-size:11px;letter-spacing:.14em;color
       <li class="fadein" style="--i:2;padding:0;border-bottom:1px solid rgba(255,255,255,.18);display:block"><a href="/guide/itsumade/" style="display:grid;grid-template-columns:56px 1fr;gap:16px;padding:22px 0"><span class="no" style="font-family:var(--oswald);font-weight:700;font-style:italic;font-size:30px;color:var(--gold);line-height:1">03</span><div><b style="display:block;font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:2px;margin-bottom:4px">いつ届ける？いつまでに注文？</b><p style="font-size:12px;color:#ddd;letter-spacing:.08em">前日・当日・遅れたときの対応</p></div></a></li>
       <li class="fadein" style="--i:3;padding:0;border-bottom:1px solid rgba(255,255,255,.18);display:block"><a href="/guide/kaishu/" style="display:grid;grid-template-columns:56px 1fr;gap:16px;padding:22px 0"><span class="no" style="font-family:var(--oswald);font-weight:700;font-style:italic;font-size:30px;color:var(--gold);line-height:1">04</span><div><b style="display:block;font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:2px;margin-bottom:4px">いつまで飾る？回収はどうする？</b><p style="font-size:12px;color:#ddd;letter-spacing:.08em">飾る期間・台の回収・他店の花の引き取り</p></div></a></li>
       <li class="fadein" style="--i:4;padding:0;border-bottom:1px solid rgba(255,255,255,.18);display:block"><a href="/guide/manner/" style="display:grid;grid-template-columns:56px 1fr;gap:16px;padding:22px 0"><span class="no" style="font-family:var(--oswald);font-weight:700;font-style:italic;font-size:30px;color:var(--gold);line-height:1">05</span><div><b style="display:block;font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:2px;margin-bottom:4px">お祝い花のマナー</b><p style="font-size:12px;color:#ddd;letter-spacing:.08em">避ける花・色、お返し、沖縄の注意点</p></div></a></li>
+      <li class="fadein" style="--i:5;padding:0;border-bottom:1px solid rgba(255,255,255,.18);display:block"><a href="/guide/kengai/" style="display:grid;grid-template-columns:56px 1fr;gap:16px;padding:22px 0"><span class="no" style="font-family:var(--oswald);font-weight:700;font-style:italic;font-size:30px;color:var(--gold);line-height:1">06</span><div><b style="display:block;font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:2px;margin-bottom:4px">県外から沖縄のお店に贈る</b><p style="font-size:12px;color:#ddd;letter-spacing:.08em">LINEだけで注文・写真報告・請求書払い</p></div></a></li>
+      <li class="fadein" style="--i:6;padding:0;border-bottom:1px solid rgba(255,255,255,.18);display:block"><a href="/guide/erabikata/" style="display:grid;grid-template-columns:56px 1fr;gap:16px;padding:22px 0"><span class="no" style="font-family:var(--oswald);font-weight:700;font-style:italic;font-size:30px;color:var(--gold);line-height:1">07</span><div><b style="display:block;font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:2px;margin-bottom:4px">スタンド花と胡蝶蘭、どっち？</b><p style="font-size:12px;color:#ddd;letter-spacing:.08em">置き場所・業態・予算で選ぶ</p></div></a></li>
+      <li class="fadein" style="--i:7;padding:0;border-bottom:1px solid rgba(255,255,255,.18);display:block"><a href="/guide/houjin/" style="display:grid;grid-template-columns:56px 1fr;gap:16px;padding:22px 0"><span class="no" style="font-family:var(--oswald);font-weight:700;font-style:italic;font-size:30px;color:var(--gold);line-height:1">08</span><div><b style="display:block;font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:2px;margin-bottom:4px">法人で贈るときの手配と経理</b><p style="font-size:12px;color:#ddd;letter-spacing:.08em">請求書払い・インボイス・勘定科目</p></div></a></li>
+      <li class="fadein" style="--i:8;padding:0;border-bottom:1px solid rgba(255,255,255,.18);display:block"><a href="/guide/taifu/" style="display:grid;grid-template-columns:56px 1fr;gap:16px;padding:22px 0"><span class="no" style="font-family:var(--oswald);font-weight:700;font-style:italic;font-size:30px;color:var(--gold);line-height:1">09</span><div><b style="display:block;font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:2px;margin-bottom:4px">台風の時期の開店祝い</b><p style="font-size:12px;color:#ddd;letter-spacing:.08em">沖縄で確実に届けるための段取り</p></div></a></li>
     </ul>
+    <p class="fadein" style="margin-top:18px;text-align:right"><a href="/guide/" style="font-family:var(--oswald);font-size:12px;letter-spacing:.2em;border-bottom:1px solid var(--gold);padding-bottom:3px">ALL GUIDES →</a></p>
     <div class="fadein" style="margin-top:34px">
       <p style="font-family:var(--oswald);font-size:11px;letter-spacing:.3em;color:var(--gray);margin-bottom:12px">BY OCCASION</p>
       <ul class="areas" style="justify-content:flex-start;margin-bottom:0">
@@ -671,9 +683,9 @@ footer .copy{font-family:var(--oswald);font-size:11px;letter-spacing:.14em;color
     <h3 class="tit oswald fadein"><span>AREA</span><small>お届けエリア</small></h3>
     <ul class="areas fadein">
       <li class="today" style="padding:0"><a href="/area/naha/" style="display:block;padding:6px 14px">那覇市</a></li><li class="today" style="padding:0"><a href="/area/tomigusuku/" style="display:block;padding:6px 14px">豊見城市</a></li><li class="today" style="padding:0"><a href="/area/itoman/" style="display:block;padding:6px 14px">糸満市</a></li><li class="today" style="padding:0"><a href="/area/haebaru/" style="display:block;padding:6px 14px">南風原町</a></li><li class="today" style="padding:0"><a href="/area/yaese/" style="display:block;padding:6px 14px">八重瀬町</a></li><li class="today" style="padding:0"><a href="/area/yonabaru/" style="display:block;padding:6px 14px">与那原町</a></li><li class="today" style="padding:0"><a href="/area/nanjo/" style="display:block;padding:6px 14px">南城市</a></li>
-      <li>浦添市</li><li>宜野湾市</li><li>西原町</li><li>北中城村</li><li>中城村</li><li>沖縄市</li><li>北谷町</li><li>うるま市</li><li>読谷村</li><li>嘉手納町</li>
+      <li style="padding:0"><a href="/area/chubu/" style="display:block;padding:6px 14px">浦添市</a></li><li>宜野湾市</li><li>西原町</li><li>北中城村</li><li>中城村</li><li>沖縄市</li><li>北谷町</li><li>うるま市</li><li>読谷村</li><li>嘉手納町</li>
     </ul>
-    <p class="note fadein">赤は12時までのご注文で当日お届け。その他は前日17時までのご注文で翌日お届け（配達料¥2,200）。北部・離島はご相談ください。</p>
+    <p class="note fadein">赤は12時までのご注文で当日お届け。その他は前日17時までのご注文で翌日お届け（配達料¥2,200）。北部・離島はご相談ください。 <a href="/area/chubu/" style="text-decoration:underline">中部への配達</a>／<a href="/area/" style="text-decoration:underline">エリア一覧</a></p>
   </div>
 </section>
 
@@ -700,6 +712,7 @@ footer .copy{font-family:var(--oswald);font-size:11px;letter-spacing:.14em;color
       <details><summary>スタンドの回収は必要ですか？</summary><p>ハレスタのスタンドは無料で回収します。お届け先に回収日をご案内するので、贈り主さまの手配は不要です。</p></details>
       <details><summary>立札には何を書けばいいですか？</summary><p>「祝 御開店」などの表書きと、贈り主のお名前（会社名・肩書・氏名）をお送りください。迷う場合は用途を教えていただければこちらでご提案します。立札は無料です。</p></details>
       <details><summary>支払い方法は？</summary><p>クレジットカード（決済リンク）、銀行振込、法人さまは請求書払いに対応しています。適格請求書（インボイス）を発行します。</p></details>
+      <details><summary>LINEを開くと「DAYS Flower」と表示されますが、注文先は合っていますか？</summary><p>はい、合っています。ハレスタのご注文は、同じ株式会社DAYSが運営する「DAYS Flower」の公式LINEで承っています。友だち追加のうえ、「ハレスタの注文」と送ってください。</p></details>
       <details><summary>周年祝い・移転祝い・就任祝いにも使えますか？</summary><p>使えます。表書きを「祝 〇周年」「祝 御移転」「祝 御就任」に変えるだけで、スタンドも胡蝶蘭も同じ価格です。</p></details>
     </div>
   </div>
@@ -710,11 +723,12 @@ footer .copy{font-family:var(--oswald);font-size:11px;letter-spacing:.14em;color
   <div class="inner">
     <h3 class="tit oswald fadein"><span>CONTACT</span><small>ご注文・お問い合わせ</small></h3>
     <div class="fadein">
-      <a class="btn" href="https://lin.ee/XXXXXXX" rel="noopener">
+      <a class="btn" href="https://lin.ee/Xuvqzq7" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 5.7 2 10.3c0 4.1 3.6 7.5 8.5 8.2.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.9-3.5 8-6c1.5-1.6 2.2-3.3 2.2-5.1C22 5.7 17.5 2 12 2z"/></svg>
         <span>LINEで注文する</span>
       </a>
       <a class="tel" href="tel:09082929414">090-8292-9414<small>9:00〜18:00 ／ 年中無休</small></a>
+      <p style="margin-top:16px;font-size:11px;color:var(--gray);letter-spacing:.06em;text-align:center">ご注文窓口は「DAYS Flower」の公式LINEです（ハレスタと同じ株式会社DAYSが運営しています）。</p>
     </div>
   </div>
 </section>
@@ -724,12 +738,12 @@ footer .copy{font-family:var(--oswald);font-size:11px;letter-spacing:.14em;color
   <a href="#top" aria-label="HARE STAND">
     <svg class="lm" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="31" fill="none" stroke="#fff" stroke-width="1.5"/><rect x="24" y="13" width="16" height="38" rx="1.5" fill="#fffcf4"/><rect x="24" y="13" width="16" height="3.5" fill="#c9a24b"/><text x="32" y="38" text-anchor="middle" font-family="serif" font-weight="700" font-size="15" fill="#d8382e">祝</text></svg>
   </a>
-  <address>沖縄県糸満市西崎（番地は公開前に差し替え）<br>株式会社DAYS 祝い花部門 ／ <a href="mailto:info@days-balloon.com">info@days-balloon.com</a></address>
-  <div class="links"><a href="https://daysballoon.jp/" rel="noopener">DAYS BALLOON</a><a href="https://days-flower.com/" rel="noopener">DAYS FLOWER</a></div>
+  <address>〒901-0305 沖縄県糸満市西崎2丁目36-7 コーポ西崎101<br>株式会社DAYS 祝い花部門 ／ <a href="mailto:info@days-balloon.com">info@days-balloon.com</a></address>
+  <div class="links"><a href="/about/">運営者情報</a><a href="/guide/">ガイド</a><a href="/area/">お届けエリア</a><a href="https://daysballoon.jp/" rel="noopener">DAYS BALLOON</a><a href="https://days-flower.com/" rel="noopener">DAYS FLOWER</a></div>
   <p class="copy oswald">Copyright HARE STAND / DAYS Co., Ltd. All Rights Reserved.</p>
 </footer>
 
-<a class="line_fab" href="https://lin.ee/XXXXXXX" rel="noopener" aria-label="LINEで注文する">
+<a class="line_fab" href="https://lin.ee/Xuvqzq7" rel="noopener" aria-label="LINEで注文する">
   <svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2C6.5 2 2 5.7 2 10.3c0 4.1 3.6 7.5 8.5 8.2.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.9-3.5 8-6c1.5-1.6 2.2-3.3 2.2-5.1C22 5.7 17.5 2 12 2z"/></svg>
   <b>LINEで注文する</b>
 </a>

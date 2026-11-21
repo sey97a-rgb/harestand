@@ -71,6 +71,8 @@ LINE_SVG = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><pat
 
 def esc(s): return html.escape(s, quote=True)
 
+LINE_NOTE = "ご注文窓口は「DAYS Flower」の公式LINEです（ハレスタと同じ株式会社DAYSが運営しています）。"
+
 def jsonld(obj): return '<script type="application/ld+json">\n' + json.dumps(obj, ensure_ascii=False, indent=1) + '\n</script>'
 
 def breadcrumb(items):
@@ -91,9 +93,9 @@ def service_ld(name, desc, url, area=None):
 
 def article_ld(title, desc, url):
     return {"@context":"https://schema.org","@type":"Article","headline":title,"description":desc,"url":SITE+url,
-            "datePublished":"2026-10-24","dateModified":UPDATED,"inLanguage":"ja",
-            "author":{"@type":"Organization","name":"ハレスタ（HARE STAND）","url":SITE+"/"},
-            "publisher":{"@type":"Organization","name":"株式会社DAYS","url":"https://daysballoon.jp/"},
+            "datePublished":PUBLISHED,"dateModified":UPDATED,"inLanguage":"ja",
+            "author":{"@type":"Person","name":COMPANY["ceo"],"jobTitle":"代表取締役","worksFor":{"@id":SITE+"/#org"},"url":SITE+"/about/"},
+            "publisher":{"@id":SITE+"/#org"},"image":SITE+"/ogp.jpg",
             "mainEntityOfPage":SITE+url,"isPartOf":{"@id":SITE+"/#website"}}
 
 def price_block():
@@ -103,12 +105,13 @@ def price_block():
 
 def cta():
     return f'''<div class="cta fadein"><p>用途・ご予算・立札の文字を送るだけ。10分以内に折り返します（9:00〜18:00）</p>
-<a class="btn" href="{LINE}" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:var(--line);color:#fff;font-weight:700;font-size:15px;letter-spacing:.1em;padding:16px 34px">{LINE_SVG}<span>LINEで注文する</span></a>
-<a href="tel:{TEL.replace('-','')}" style="display:block;margin-top:16px;font-family:var(--oswald);font-size:24px;letter-spacing:.06em">{TEL}</a></div>'''
+<a class="btn" href="{LINE}" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:var(--line);color:#fff;font-weight:700;font-size:15px;letter-spacing:.1em;padding:16px 34px;white-space:nowrap">{LINE_SVG}<span>LINEで注文する</span></a>
+<a href="tel:{TEL.replace('-','')}" style="display:block;margin-top:16px;font-family:var(--oswald);font-size:24px;letter-spacing:.06em">{TEL}</a>
+<p style="margin:14px 0 0;font-size:11px">{LINE_NOTE}</p></div>'''
 
 def related(exclude=None):
     items = [("祝いスタンド・胡蝶蘭の価格","/#stand")] + [(u["name"],f"/{u['slug']}/") for u in USES] + [("胡蝶蘭","/kochoran/")] \
-          + [(b["name"],f"/yosan/{b['slug']}/") for b in BUDGETS] + [(a["name"]+"への配達",f"/area/{a['slug']}/") for a in AREAS] + [(g["name"],f"/guide/{g['slug']}/") for g in GUIDES]
+          + [(b["name"],f"/yosan/{b['slug']}/") for b in BUDGETS] + [(a["name"]+"への配達",f"/area/{a['slug']}/") for a in AREAS] + [("本島中部への配達","/area/chubu/")] + [(g["name"],f"/guide/{g['slug']}/") for g in GUIDES] + [("お届けエリア一覧","/area/"),("ガイド一覧","/guide/"),("運営者情報","/about/")]
     lis = "".join(f'<li><a href="{u}">{esc(n)}</a></li>' for n,u in items if u != exclude)
     return f'<div class="rel fadein"><h3>RELATED</h3><ul>{lis}</ul></div>'
 
@@ -131,6 +134,7 @@ def page(url, title, desc, en, h1, sub, crumbs, body, lds):
 <meta property="og:url" content="{canon}">
 <meta property="og:image" content="{SITE}/ogp.jpg">
 <meta property="og:locale" content="ja_JP">
+<meta property="article:modified_time" content="{UPDATED}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -235,8 +239,8 @@ for a in AREAS:
 {cta()}
 {related(url)}"""
     lds = [service_ld(f"{a['name']}への祝い花スタンド配達", desc, url, [a['name']]), faqld(a_faq),
-           breadcrumb([("HOME","/"),("お届けエリア","/#area"),(a['name'],url)])]
-    write(url, page(url, title, desc, a['en'], f"{esc(a['name'])}の開店祝いスタンド花<br><span style='font-size:.6em;color:var(--gray)'>12時までのご注文で当日お届け</span>", f"{a['en']} · SAME-DAY DELIVERY", [("HOME","/"),("お届けエリア","/#area"),(a['name'],None)], body, lds))
+           breadcrumb([("HOME","/"),("お届けエリア","/area/"),(a['name'],url)])]
+    write(url, page(url, title, desc, a['en'], f"{esc(a['name'])}の開店祝いスタンド花<br><span style='font-size:.6em;color:var(--gray)'>12時までのご注文で当日お届け</span>", f"{a['en']} · SAME-DAY DELIVERY", [("HOME","/"),("お届けエリア","/area/"),(a['name'],None)], body, lds))
     urls.append(url)
 
 # ---------- ガイド ----------
@@ -251,8 +255,8 @@ for g in GUIDES:
 <div class="faq fadein">{''.join(f'<details><summary>{esc(q)}</summary><p>{esc(a)}</p></details>' for q,a in g['faq'])}</div>
 {cta()}
 {related(url)}"""
-    lds = [article_ld(g['title'], desc, url), faqld(g['faq']), breadcrumb([("HOME","/"),("ガイド","/#guide"),(g['name'],url)])]
-    write(url, page(url, title, desc, g['en'], esc(g['h1']), "GUIDE · CELEBRATION FLOWERS", [("HOME","/"),("ガイド","/#guide"),(g['name'],None)], body, lds))
+    lds = [article_ld(g['title'], desc, url), faqld(g['faq']), breadcrumb([("HOME","/"),("ガイド","/guide/"),(g['name'],url)])]
+    write(url, page(url, title, desc, g['en'], esc(g['h1']), "GUIDE · CELEBRATION FLOWERS", [("HOME","/"),("ガイド","/guide/"),(g['name'],None)], body, lds))
     urls.append(url)
 
 # ---------- 予算ページ ----------
@@ -277,9 +281,128 @@ for bgt in BUDGETS:
 {cta()}
 {related(url)}"""
     lds = [service_ld(f"{bgt['name']}の開店祝いスタンド花（沖縄南部）", desc, url), faqld(bgt['faq']),
-           breadcrumb([("HOME","/"),("予算から探す","/#guide"),(bgt['name'],url)]), article_ld(bgt['h1'], desc, url)]
-    write(url, page(url, title, desc, bgt['en'], esc(bgt['h1']), f"{bgt['en']} · NAHA · SOUTH OKINAWA", [("HOME","/"),("予算から探す","/#guide"),(bgt['name'],None)], body, lds))
+           breadcrumb([("HOME","/"),("予算から探す","/guide/#budget"),(bgt['name'],url)]), article_ld(bgt['h1'], desc, url)]
+    write(url, page(url, title, desc, bgt['en'], esc(bgt['h1']), f"{bgt['en']} · NAHA · SOUTH OKINAWA", [("HOME","/"),("予算から探す","/guide/#budget"),(bgt['name'],None)], body, lds))
     urls.append(url)
+
+
+# ---------- 本島中部（翌日配達） ----------
+c = CHUBU
+url = "/area/chubu/"
+title = "浦添・宜野湾・沖縄市など本島中部へのスタンド花配達｜前日17時までで翌日お届け｜ハレスタ"
+desc = f"{c['cities']}への開店祝い・周年祝いのスタンド花と胡蝶蘭。{c['cutoff']}までのご注文で翌日お届け、配達料¥{c['fee']}。立札・納品写真・回収無料。"
+c_faq = [("中部は当日配達できますか？", f"中部は{c['cutoff']}までのご注文で翌日お届けです。当日配達は那覇・南部7市町のみとなります。"),
+         ("中部への配達料はいくらですか？", f"1件あたり¥{c['fee']}（税込）です。複数基を同じお届け先へ贈る場合も配達料は1回分です。"),
+         ("中部のスタンドも回収してもらえますか？", "はい。回収は無料で、お届け先に回収日をご案内します。"),
+         ("北部や離島へは届けられますか？", "北部・離島は距離や便によって対応が変わるため、公式LINEでご相談ください。")]
+body = f"""
+<p class="lead fadein">{esc(c['cities'])}への開店祝い・周年祝い・移転祝いのスタンド花と胡蝶蘭は、{esc(c['cutoff'])}までのご注文で翌日お届けします。配達料は¥{esc(c['fee'])}（税込）。立札・納品写真・スタンドの回収は南部と同じく無料です。</p>
+<h2 class="fadein">中部のお届け対象エリア</h2>
+<p class="fadein">{esc(c['cities'])}。北部・離島はご相談ください。</p>
+<h2 class="fadein">注文の締切とお届け日</h2>
+<ul class="dot fadein"><li>祝いスタンド：{esc(c['cutoff'])}までのご注文で翌日お届け</li><li>胡蝶蘭：前日12時までのご注文で翌日お届け</li><li>開店日の前日午後〜当日午前のお届けが基本です</li></ul>
+<h2 class="fadein">中部に届けられる祝いスタンド・胡蝶蘭</h2>
+<div class="fadein">{price_block()}</div>
+<p class="fadein">中部へのお届けは上記価格に配達料¥{esc(c['fee'])}が加わります。</p>
+<h2 class="fadein">中部への配達のよくある質問</h2>
+<div class="faq fadein">{''.join(f'<details><summary>{esc(q)}</summary><p>{esc(a)}</p></details>' for q,a in c_faq)}</div>
+{cta()}
+{related(url)}"""
+lds = [service_ld("本島中部への祝い花スタンド配達（翌日）", desc, url, c['cities'].split("・")), faqld(c_faq),
+       breadcrumb([("HOME","/"),("お届けエリア","/area/"),("本島中部",url)])]
+write(url, page(url, title, desc, c['en'], "本島中部へのスタンド花配達<br><span style='font-size:.6em;color:var(--gray)'>前日17時までのご注文で翌日お届け</span>", "CENTRAL OKINAWA · NEXT-DAY DELIVERY", [("HOME","/"),("お届けエリア","/area/"),("本島中部",None)], body, lds))
+urls.append(url)
+
+# ---------- エリア一覧 ----------
+url = "/area/"
+title = "お届けエリア一覧｜那覇・南部7市町は当日、中部は翌日｜ハレスタ"
+desc = f"ハレスタのお届けエリア。{FACTS['same_day']}は当日12時までのご注文で当日お届け（配達料込み）。本島中部は前日17時まで・配達料¥2,200で翌日お届け。"
+rows = "".join(f'<a class="r" href="/area/{a["slug"]}/"><div><b>{esc(a["name"])}</b><small>{esc(a["spots"])}</small></div><div class="p" style="font-size:14px">当日<i>12時まで</i></div></a>' for a in AREAS)
+rows += f'<a class="r" href="/area/chubu/"><div><b>本島中部</b><small>{esc(CHUBU["cities"])}</small></div><div class="p" style="font-size:14px">翌日<i>+¥2,200</i></div></a>'
+body = f"""
+<p class="lead fadein">{esc(desc)}</p>
+<div class="tbl fadein" style="grid-template-columns:1fr">{rows}</div>
+<p class="fadein">北部・離島はご相談ください。工房は{esc(COMPANY['full'])}にあります。</p>
+{cta()}"""
+lds = [{"@context":"https://schema.org","@type":"CollectionPage","name":title,"url":SITE+url,"isPartOf":{"@id":SITE+"/#website"},
+        "mainEntity":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","position":i+1,"name":n,"url":SITE+u} for i,(n,u) in enumerate([(a["name"],f"/area/{a['slug']}/") for a in AREAS]+[("本島中部","/area/chubu/")])]}},
+       breadcrumb([("HOME","/"),("お届けエリア",url)])]
+write(url, page(url, title, desc, "AREA", "お届けエリア一覧", "SAME-DAY · NEXT-DAY DELIVERY", [("HOME","/"),("お届けエリア",None)], body, lds))
+urls.append(url)
+
+# ---------- ガイド一覧 ----------
+url = "/guide/"
+title = "お祝い花の基礎知識｜立札・相場・マナー・予算別ガイド｜ハレスタ"
+desc = "開店祝い・周年祝いのお祝い花で迷いやすい、立札の書き方・相場・届けるタイミング・回収・マナー・県外からの贈り方・法人の経理・台風時期の注意点をまとめたガイドです。"
+g_rows = "".join(f'<a class="r" href="/guide/{g["slug"]}/"><div><b>{esc(g["h1"])}</b><small>{esc(g["lead"][:60])}…</small></div></a>' for g in GUIDES)
+b_rows = "".join(f'<a class="r" href="/yosan/{b["slug"]}/"><div><b>{esc(b["h1"])}</b></div></a>' for b in BUDGETS)
+body = f"""
+<p class="lead fadein">{esc(desc)}</p>
+<h2 class="fadein">ガイド</h2>
+<div class="tbl fadein" style="grid-template-columns:1fr">{g_rows}</div>
+<h2 class="fadein" id="budget">予算から探す</h2>
+<div class="tbl fadein" style="grid-template-columns:1fr">{b_rows}</div>
+{cta()}"""
+lds = [{"@context":"https://schema.org","@type":"CollectionPage","name":title,"url":SITE+url,"isPartOf":{"@id":SITE+"/#website"},
+        "mainEntity":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","position":i+1,"name":g["h1"],"url":SITE+f"/guide/{g['slug']}/"} for i,g in enumerate(GUIDES)]}},
+       breadcrumb([("HOME","/"),("ガイド",url)])]
+write(url, page(url, title, desc, "GUIDE", "お祝い花の基礎知識", "GUIDE · CELEBRATION FLOWERS", [("HOME","/"),("ガイド",None)], body, lds))
+urls.append(url)
+
+# ---------- 運営者情報 ----------
+url = "/about/"
+title = "運営者情報｜ハレスタ（株式会社DAYS・沖縄県糸満市西崎）"
+desc = f"祝い花専門店ハレスタ（HARE STAND）の運営者情報。運営は株式会社DAYS（代表取締役 {COMPANY['ceo']}）、所在地 {COMPANY['full']}。適格請求書発行事業者 登録番号 {COMPANY['invoice_no']}。"
+info = [("屋号","ハレスタ（HARE STAND）"),("運営会社",COMPANY["legal"]),("代表者",f"代表取締役 {COMPANY['ceo']}（{COMPANY['ceo_kana']}）"),
+        ("設立","2026年1月20日"),("所在地（工房）",COMPANY["full"]),("電話",f"{TEL}（9:00〜18:00・年中無休）"),
+        ("ご注文窓口",f"{COMPANY['line_name']} 公式LINE（{LINE}）"),("メール",COMPANY["email"]),
+        ("法人番号",COMPANY["corp_no"]),("適格請求書発行事業者 登録番号",COMPANY["invoice_no"]),
+        ("事業内容","祝い花（スタンド花・胡蝶蘭）の制作・配達・回収")]
+rows = "".join(f'<div class="r" style="grid-template-columns:1fr"><div><small>{esc(k)}</small><b style="font-size:14px;font-family:var(--sans);font-weight:500">{esc(v)}</b></div></div>' for k,v in info)
+body = f"""
+<p class="lead fadein">ハレスタは、沖縄でホテルや企業のバルーン装飾を手がける株式会社DAYSが運営する祝い花専門店です。糸満市西崎の工房でバルーンを自社で膨らませ、祝いスタンドと胡蝶蘭を那覇・南部へ自分たちで運んでいます。</p>
+<h2 class="fadein">会社概要</h2>
+<div class="tbl fadein" style="grid-template-columns:1fr">{rows}</div>
+<p class="fadein"><a href="{COMPANY['map']}" rel="noopener" style="text-decoration:underline">地図で見る（Googleマップ）</a></p>
+<h2 class="fadein">同じ会社が運営するサービス</h2>
+<ul class="dot fadein"><li><a href="https://daysballoon.jp/" rel="noopener" style="text-decoration:underline">DAYS Balloon</a>：県内のリゾートホテルと提携したサプライズ・プロポーズのバルーン装飾</li><li><a href="https://days-flower.com/" rel="noopener" style="text-decoration:underline">DAYS Flower</a>：プロポーズの薔薇と押し花加工。ハレスタのご注文窓口（公式LINE）も兼ねています</li></ul>
+<h2 class="fadein">お約束していること</h2>
+<ul class="dot fadein"><li>表示価格はすべて税込。南部7市町への配達・立札・納品写真・スタンドの回収は価格に含みます</li><li>お届け後は設置した状態の写真をLINEでお送りします</li><li>法人さまには適格請求書（インボイス）を発行します</li></ul>
+{cta()}"""
+lds = [{"@context":"https://schema.org","@type":"AboutPage","name":title,"url":SITE+url,"isPartOf":{"@id":SITE+"/#website"},"about":{"@id":SITE+"/#org"},"dateModified":UPDATED},
+       breadcrumb([("HOME","/"),("運営者情報",url)])]
+write(url, page(url, title, desc, "ABOUT", "運営者情報", "ABOUT · DAYS CO., LTD.", [("HOME","/"),("運営者情報",None)], body, lds))
+urls.append(url)
+
+# ---------- llms-full.txt（AI向けの全文要約） ----------
+L = [f"# ハレスタ（HARE STAND）— 全情報", "",
+     f"> 沖縄南部（{FACTS['same_day']}）へ当日配達する祝い花専門店。運営は{COMPANY['legal']}（{COMPANY['full']}）。公式サイト {SITE}/", "",
+     "## 基本情報",
+     f"- 運営：{COMPANY['legal']}／代表取締役 {COMPANY['ceo']}／設立 2026年1月20日",
+     f"- 所在地（工房）：{COMPANY['full']}",
+     f"- 電話：{TEL}（9:00〜18:00・年中無休）／メール：{COMPANY['email']}",
+     f"- ご注文窓口：{COMPANY['line_name']} 公式LINE {LINE}（同じ株式会社DAYSが運営）",
+     f"- 法人番号：{COMPANY['corp_no']}／適格請求書発行事業者 登録番号：{COMPANY['invoice_no']}", "",
+     "## 価格（すべて税込・バルーン入り・立札無料・納品写真・回収無料・南部配達料込み）"]
+L += [f"- 祝いスタンド {n}（{sz}）¥{p}：{w}" for n,sz,p,w in FACTS["plans"]]
+L += [f"- {n}（{sz}）¥{p}：立札・ラッピング込み" for n,sz,p in FACTS["orchid"]]
+L += ["", "## 配達",
+      f"- 当日配達：{FACTS['same_day']}。当日{FACTS['cutoff']}までのご注文。配達料込み。",
+      f"- 翌日配達：{CHUBU['cities']}。{CHUBU['cutoff']}までのご注文、配達料¥{CHUBU['fee']}。",
+      "- 胡蝶蘭は前日12時までのご注文。北部・離島は要相談。"]
+L += ["", "## 南部各エリア"] + [f"- {a['name']}（{SITE}/area/{a['slug']}/）：{a['spots']}。{a['access']}" for a in AREAS]
+L += ["", "## 用途別"] + [f"- {u['name']}（{SITE}/{u['slug']}/）：表書き「{u['omote']}」。{u['timing']}" for u in USES]
+def qa(title, faq): return ["", f"### {title}"] + [f"- Q. {q}\n  A. {a}" for q,a in faq]
+L += ["", "## よくある質問"]
+for u in USES: L += qa(u['name'], u['faq'])
+for g in GUIDES: L += qa(g['name'], g['faq'])
+for b in BUDGETS: L += qa(b['name'], b['faq'])
+L += qa("本島中部", c_faq)
+L += ["", "## ガイド要点"]
+for g in GUIDES:
+    L += ["", f"### {g['h1']}（{SITE}/guide/{g['slug']}/）", g['lead']] + [f"- {h}：{t}" for h,t in g['sections']]
+L += ["", f"最終更新：{UPDATED}"]
+open(os.path.join(ROOT,"llms-full.txt"),"w",encoding="utf-8").write("\n".join(L)+"\n")
 
 # ---------- sitemap ----------
 sm = ['<?xml version="1.0" encoding="UTF-8"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
