@@ -19,7 +19,7 @@
  * ============================================================
  */
 
-const VERSION = 'harestand-line v1 (2026-11-21)';
+const VERSION = 'harestand-line v1.1 (2026-11-21)';
 const MODEL = 'claude-sonnet-5';
 const SITE = 'https://harestand.com';
 const TEL = '090-8292-9414';

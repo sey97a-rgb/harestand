@@ -21,4 +21,4 @@
 画像は `/line/richmenu.png`（サイトから配信）。担当者がLINEで「リッチメニュー設定」と送ると作り直して全員に設定されます。
 
 ## デプロイ
-Cloudflare の Worker 名は `harestand-line`（https://harestand-line.sey-97a.workers.dev/ ）。Webhook URL は `https://harestand-line.sey-97a.workers.dev/webhook`。
+GitHub の main に push すると Cloudflare Workers Builds が line-bot/ を自動デプロイします。Cloudflare の Worker 名は `harestand-line`（https://harestand-line.sey-97a.workers.dev/ ）。Webhook URL は `https://harestand-line.sey-97a.workers.dev/webhook`。
