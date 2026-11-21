@@ -111,7 +111,7 @@ def cta():
 
 def related(exclude=None):
     items = [("祝いスタンド・胡蝶蘭の価格","/#stand")] + [(u["name"],f"/{u['slug']}/") for u in USES] + [("胡蝶蘭","/kochoran/")] \
-          + [(b["name"],f"/yosan/{b['slug']}/") for b in BUDGETS] + [(a["name"]+"への配達",f"/area/{a['slug']}/") for a in AREAS] + [("本島中部への配達","/area/chubu/")] + [(g["name"],f"/guide/{g['slug']}/") for g in GUIDES] + [("お届けエリア一覧","/area/"),("ガイド一覧","/guide/"),("運営者情報","/about/")]
+          + [(b["name"],f"/yosan/{b['slug']}/") for b in BUDGETS] + [(a["name"]+"への配達",f"/area/{a['slug']}/") for a in AREAS] + [("本島中部への配達","/area/chubu/")] + [(g["name"],f"/guide/{g['slug']}/") for g in GUIDES] + [("お届けエリア一覧","/area/"),("ガイド一覧","/guide/"),("よくある質問","/faq/"),("運営者情報","/about/")]
     lis = "".join(f'<li><a href="{u}">{esc(n)}</a></li>' for n,u in items if u != exclude)
     return f'<div class="rel fadein"><h3>RELATED</h3><ul>{lis}</ul></div>'
 
@@ -347,6 +347,32 @@ lds = [{"@context":"https://schema.org","@type":"CollectionPage","name":title,"u
         "mainEntity":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","position":i+1,"name":g["h1"],"url":SITE+f"/guide/{g['slug']}/"} for i,g in enumerate(GUIDES)]}},
        breadcrumb([("HOME","/"),("ガイド",url)])]
 write(url, page(url, title, desc, "GUIDE", "お祝い花の基礎知識", "GUIDE · CELEBRATION FLOWERS", [("HOME","/"),("ガイド",None)], body, lds))
+urls.append(url)
+
+
+# ---------- よくある質問（全ページのFAQを集約） ----------
+url = "/faq/"
+title = "よくある質問｜祝い花スタンド・胡蝶蘭の注文・配達・立札・支払い｜ハレスタ"
+desc = "ハレスタのよくある質問。当日配達の締切、配達エリア、料金、立札の書き方、スタンドの回収、支払い方法（請求書・インボイス）、県外からの注文などにまとめて答えます。"
+TOP_FAQ = [("当日に届けてもらえますか？", f"{FACTS['same_day']}は、当日{FACTS['cutoff']}までのご注文で当日お届けします。本島中部は前日17時までのご注文で翌日お届け（配達料¥2,200）です。"),
+           ("料金はいくらですか？", "祝いスタンドは1段¥16,500・2段¥27,500・特大2段¥44,000、胡蝶蘭は3本立ち¥27,500・5本立ち¥38,500です（すべて税込）。南部7市町への配達・立札・納品写真・回収は料金に含まれます。"),
+           ("注文方法は？", f"ハレスタ公式LINE（{LINE}）に、お届け日・お届け先・ご予算・立札の文字を送るだけです。電話（{TEL}・9:00〜18:00）でも承ります。"),
+           ("支払い方法は？", "クレジットカード（決済リンク）、銀行振込、法人さまは請求書払いに対応しています。適格請求書（インボイス、登録番号 T5360001036291）を発行します。"),
+           ("スタンドの回収は必要ですか？", "ハレスタのスタンドは無料で回収します。お届け先に回収日をご案内するので、贈り主さまの手配は不要です。")]
+groups = [("ご注文・配達・料金", TOP_FAQ + c_faq[:2])] + [(u["name"], u["faq"]) for u in USES] + [("胡蝶蘭", k_faq)] + [(g["name"], g["faq"]) for g in GUIDES] + [(b["name"], b["faq"]) for b in BUDGETS]
+seen = set(); allq = []; body_parts = []
+for gname, faq in groups:
+    items = [(q, a) for q, a in faq if q not in seen]
+    for q, a in items: seen.add(q); allq.append((q, a))
+    if items:
+        body_parts.append(f'<h2 class="fadein">{esc(gname)}</h2><div class="faq fadein">' + "".join(f'<details><summary>{esc(q)}</summary><p>{esc(a)}</p></details>' for q, a in items) + '</div>')
+body = f"""
+<p class="lead fadein">{esc(desc)}</p>
+{''.join(body_parts)}
+{cta()}
+{related(url)}"""
+lds = [faqld(allq), breadcrumb([("HOME","/"),("よくある質問",url)])]
+write(url, page(url, title, desc, "FAQ", "よくある質問", "FAQ · HARE STAND", [("HOME","/"),("よくある質問",None)], body, lds))
 urls.append(url)
 
 # ---------- 運営者情報 ----------

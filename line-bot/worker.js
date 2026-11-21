@@ -124,6 +124,9 @@ async function handleEvent(ev, env) {
     if (!staff.length) {
       staff.push({ id: uid, name, owner: true }); await env.HS_KV.put('staff', JSON.stringify(staff));
       await reply(env, ev.replyToken, [text(welcomeStaff(name))]);
+      // 最初の担当者登録のときにリッチメニューも設定する
+      try { await setupRichMenu(env); await push(env, uid, [text('リッチメニューも設定しました。トーク画面の下に表示されます。')]); }
+      catch (e) { await push(env, uid, [text('リッチメニューの設定に失敗しました。「リッチメニュー設定」と送ると再試行します。\n' + String(e).slice(0, 200))]); }
     } else {
       await env.HS_KV.put('apply:' + uid, name, { expirationTtl: 86400 * 3 });
       await reply(env, ev.replyToken, [text('担当者の登録を申請しました。承認されるとお知らせします。')]);
