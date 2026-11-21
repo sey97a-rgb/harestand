@@ -10,8 +10,9 @@
  *
  *  Cloudflare に登録するもの
  *   Secret : LINE_CHANNEL_SECRET / LINE_CHANNEL_ACCESS_TOKEN / ANTHROPIC_API_KEY
- *            ADMIN_CODE（担当者登録の合言葉） / ADMIN_TOKEN（リッチメニュー設定用）
  *   KV     : HS_KV
+ *  担当者の登録：最初に「担当者登録」と送った人が管理者。2人目以降は管理者がボタンで承認
+ *  リッチメニュー：担当者が「リッチメニュー設定」と送ると作り直して全員に設定
  *  任意の変数
  *   NOTIFY_ALL = "1" … すべてのお客さまメッセージを担当者に通知する（既定は要対応のみ＋新規のお客さま）
  *   PAUSE_HOURS     … 担当者が手で返信したあとAIを止める時間（既定 12）
@@ -77,10 +78,6 @@ export default {
     if (request.method === 'GET' && url.pathname === '/') {
       return new Response(VERSION + '\n', { headers: { 'content-type': 'text/plain; charset=utf-8' } });
     }
-    if (url.pathname === '/admin/richmenu') {
-      if (!env.ADMIN_TOKEN || url.searchParams.get('token') !== env.ADMIN_TOKEN) return new Response('forbidden', { status: 403 });
-      try { return json(await setupRichMenu(env)); } catch (e) { return json({ ok: false, error: String(e) }, 500); }
-    }
     if (request.method === 'POST' && (url.pathname === '/webhook' || url.pathname === '/')) {
       const body = await request.text();
       const ok = await verifySignature(body, request.headers.get('x-line-signature') || '', env.LINE_CHANNEL_SECRET || '');
@@ -121,15 +118,17 @@ async function handleEvent(ev, env) {
   if (ev.type !== 'message') return;
   const m = ev.message;
 
-  // 担当者登録
-  if (m.type === 'text' && /^担当者登録\s*/.test(m.text)) {
-    const code = m.text.replace(/^担当者登録\s*/, '').trim();
-    if (env.ADMIN_CODE && code === env.ADMIN_CODE) {
-      const name = (await getProfile(env, uid)).displayName || '担当者';
-      if (!isStaff) { staff.push({ id: uid, name }); await env.HS_KV.put('staff', JSON.stringify(staff)); }
-      await reply(env, ev.replyToken, [text(`${name}さんを担当者に登録しました。\nお客さまの注文や要対応のメッセージが届くと、ここに通知します。\n「お客さま一覧」と送ると、最近のお客さまを選んで返信できます。\n解除は「担当者解除」です。`)]);
+  // 担当者登録（最初の1人は即登録＝管理者。2人目以降は既存の担当者がボタンで承認）
+  if (m.type === 'text' && m.text.trim() === '担当者登録' && !isStaff) {
+    const name = (await getProfile(env, uid)).displayName || '担当者';
+    if (!staff.length) {
+      staff.push({ id: uid, name, owner: true }); await env.HS_KV.put('staff', JSON.stringify(staff));
+      await reply(env, ev.replyToken, [text(welcomeStaff(name))]);
     } else {
-      await reply(env, ev.replyToken, [text('合言葉が違います。')]);
+      await env.HS_KV.put('apply:' + uid, name, { expirationTtl: 86400 * 3 });
+      await reply(env, ev.replyToken, [text('担当者の登録を申請しました。承認されるとお知らせします。')]);
+      for (const s of staff) await push(env, s.id, [{ type: 'text', text: `${name}さんから担当者登録の申請が届きました。`,
+        quickReply: { items: [qrPostback('承認する', `act=approve&u=${uid}`), qrPostback('却下する', `act=reject&u=${uid}`)] } }]);
     }
     return;
   }
@@ -242,6 +241,12 @@ async function staffMessage(env, ev, uid, staff) {
     return;
   }
   if (t === 'お客さま一覧' || t === 'お客様一覧') return sendCustomerList(env, ev.replyToken);
+  if (t === 'リッチメニュー設定') {
+    try { const r = await setupRichMenu(env); await reply(env, ev.replyToken, [text('リッチメニューを設定しました。（' + r.richMenuId + '）')]); }
+    catch (e) { await reply(env, ev.replyToken, [text('リッチメニューの設定に失敗しました：' + String(e).slice(0, 300))]); }
+    return;
+  }
+  if (t === '使い方' || t === 'ヘルプ') { await reply(env, ev.replyToken, [text(welcomeStaff(''))]); return; }
   if (t === 'キャンセル') { await env.HS_KV.delete('target:' + uid); await reply(env, ev.replyToken, [text('送信先の選択を取り消しました。')]); return; }
 
   const target = await env.HS_KV.get('target:' + uid);
@@ -270,6 +275,21 @@ async function staffMessage(env, ev, uid, staff) {
 
 async function staffPostback(env, ev, uid, p) {
   const act = p.get('act'), u = p.get('u');
+  if (act === 'approve' && u) {
+    const staff = await getStaff(env);
+    const name = await env.HS_KV.get('apply:' + u);
+    if (!name) { await reply(env, ev.replyToken, [text('この申請はすでに処理済みか、期限が切れています。')]); return; }
+    if (!staff.some(s => s.id === u)) { staff.push({ id: u, name }); await env.HS_KV.put('staff', JSON.stringify(staff)); }
+    await env.HS_KV.delete('apply:' + u);
+    await reply(env, ev.replyToken, [text(`${name}さんを担当者に登録しました。`)]);
+    await push(env, u, [text(welcomeStaff(name))]);
+    return;
+  }
+  if (act === 'reject' && u) {
+    await env.HS_KV.delete('apply:' + u);
+    await reply(env, ev.replyToken, [text('申請を却下しました。')]);
+    return;
+  }
   if (act === 'to' && u) {
     await env.HS_KV.put('target:' + uid, u, { expirationTtl: 1800 });
     const c = await getCustomer(env, u);
@@ -311,6 +331,10 @@ async function notifyStaff(env, staff, uid, name, body, _x, quiet) {
     ] },
   };
   for (const s of staff) await push(env, s.id, [msg], quiet);
+}
+
+function welcomeStaff(name) {
+  return `${name ? name + 'さんを担当者に登録しました。\n\n' : ''}【担当者の使い方】\n・お客さまの注文がそろったときや、確認が必要なときにここへ通知します\n・通知の「返信する」を押して文面を送ると、お客さまに届きます（そのお客さまのAIは12時間止まります）\n・「お客さま一覧」と送ると、最近のお客さまを選んで返信できます\n・「リッチメニュー設定」でメニューを作り直します\n・「担当者解除」で登録を外します`;
 }
 
 /* ------------------------------------------------------------

@@ -2,7 +2,7 @@
 import worker from '../worker.js';
 const kv = new Map();
 const env = {
-  LINE_CHANNEL_SECRET: 'sec', LINE_CHANNEL_ACCESS_TOKEN: 'tok', ANTHROPIC_API_KEY: 'k', ADMIN_CODE: 'hare123', ADMIN_TOKEN: 'adm',
+  LINE_CHANNEL_SECRET: 'sec', LINE_CHANNEL_ACCESS_TOKEN: 'tok', ANTHROPIC_API_KEY: 'k', 
   HS_KV: { get: async k => kv.has(k) ? kv.get(k) : null, put: async (k, v) => kv.set(k, v), delete: async k => kv.delete(k) },
 };
 const sent = []; let aiOut = '';
@@ -30,8 +30,14 @@ let fails = 0; const ok = (c, m) => { console.log((c ? 'OK ' : 'NG ') + m); if (
 const bad = await worker.fetch(new Request('https://x/webhook', { method: 'POST', body: '{}', headers: { 'x-line-signature': 'x' } }), env, { waitUntil() {} });
 ok(bad.status === 401, '署名が違うと401');
 // 担当者登録
-await post(msg('USTAFF', '担当者登録 hare123'));
-ok(JSON.parse(kv.get('staff')).length === 1, '担当者登録');
+await post(msg('USTAFF', '担当者登録'));
+ok(JSON.parse(kv.get('staff')).length === 1, '最初の担当者は即登録');
+sent.length = 0; await post(msg('USTAFF2', '担当者登録'));
+ok(JSON.parse(kv.get('staff')).length === 1 && sent.some(s => s.body.to === 'USTAFF'), '2人目は申請→管理者に通知');
+await post(pb('USTAFF', 'act=approve&u=USTAFF2'));
+ok(JSON.parse(kv.get('staff')).length === 2, '承認で登録');
+await post(msg('USTAFF2', '担当者解除'));
+ok(JSON.parse(kv.get('staff')).length === 1, '解除');
 // 友だち追加
 sent.length = 0; await post({ type: 'follow', replyToken: 'r', source: { type: 'user', userId: 'UCUST' } });
 ok(sent[0].body.messages[0].text.includes('友だち追加'), 'あいさつ');
