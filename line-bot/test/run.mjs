@@ -76,5 +76,5 @@ ok(sent[0].body.messages[0].quickReply.items.length >= 1, '宛先未選択なら
 sent.length = 0; aiOut = 'すみません'; await post(msg('UCUST', '?'));
 ok(sent.some(s => s.url === 'push' && s.body.to === 'USTAFF'), '壊れた出力は担当者へ');
 // GET
-ok((await (await worker.fetch(new Request('https://x/'), env, {})).text()).startsWith('harestand-line'), 'GET /');
+ok((await (await worker.fetch(new Request('https://x/'), env, {})).text()).includes('harestand-line'), 'GET /');
 console.log(fails ? `${fails} 件NG` : 'すべてOK'); process.exit(fails ? 1 : 0);

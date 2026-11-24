@@ -19,7 +19,7 @@
  * ============================================================
  */
 
-const VERSION = 'harestand-line v1.1 (2026-11-21)';
+const VERSION = 'harestand-line v1.2 (2026-11-24)';
 const MODEL = 'claude-sonnet-5';
 const SITE = 'https://harestand.com';
 const TEL = '090-8292-9414';
@@ -76,11 +76,12 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     if (request.method === 'GET' && url.pathname === '/') {
-      return new Response(VERSION + '\n', { headers: { 'content-type': 'text/plain; charset=utf-8' } });
+      const have = ['LINE_CHANNEL_SECRET','LINE_CHANNEL_ACCESS_TOKEN','ANTHROPIC_API_KEY'].map(k => k + ':' + (env[k] ? 'OK(' + String(env[k]).trim().length + '文字)' : 'なし')).join('\n');
+      return new Response(VERSION + '\n' + have + '\n', { headers: { 'content-type': 'text/plain; charset=utf-8' } });
     }
     if (request.method === 'POST' && (url.pathname === '/webhook' || url.pathname === '/')) {
       const body = await request.text();
-      const ok = await verifySignature(body, request.headers.get('x-line-signature') || '', env.LINE_CHANNEL_SECRET || '');
+      const ok = await verifySignature(body, request.headers.get('x-line-signature') || '', String(env.LINE_CHANNEL_SECRET || '').trim());
       if (!ok) return new Response('bad signature', { status: 401 });
       let data; try { data = JSON.parse(body); } catch { return new Response('bad json', { status: 400 }); }
       for (const ev of data.events || []) ctx.waitUntil(handleEvent(ev, env).catch(e => console.error('event error', e)));
@@ -210,7 +211,7 @@ async function askAI(env, hist) {
   while (msgs.length && msgs[0].role !== 'user') msgs.shift();
   const res = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
-    headers: { 'content-type': 'application/json', 'x-api-key': env.ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01' },
+    headers: { 'content-type': 'application/json', 'x-api-key': String(env.ANTHROPIC_API_KEY || '').trim(), 'anthropic-version': '2023-06-01' },
     body: JSON.stringify({ model: MODEL, max_tokens: 4000, system, messages: msgs }),
   });
   if (!res.ok) throw new Error('anthropic ' + res.status + ' ' + (await res.text()).slice(0, 300));
@@ -357,7 +358,7 @@ function greeting() {
 }
 
 async function setupRichMenu(env) {
-  const H = { authorization: 'Bearer ' + env.LINE_CHANNEL_ACCESS_TOKEN, 'content-type': 'application/json' };
+  const H = { authorization: 'Bearer ' + tok(env), 'content-type': 'application/json' };
   const W = 2500, Hh = 1686, cw = Math.round(W / 3), ch = Math.round(Hh / 2);
   const area = (i, action) => ({ bounds: { x: (i % 3) * cw, y: Math.floor(i / 3) * ch, width: i % 3 === 2 ? W - 2 * cw : cw, height: i < 3 ? ch : Hh - ch }, action });
   const menu = {
@@ -407,6 +408,7 @@ async function touchCustomer(env, uid, name, last) {
 /* ------------------------------------------------------------
  *  LINE API
  * ------------------------------------------------------------ */
+function tok(env) { return String(env.LINE_CHANNEL_ACCESS_TOKEN || '').trim(); }
 function text(t) { return { type: 'text', text: String(t).slice(0, 4900) }; }
 function qrMessage(label, t) { return { type: 'action', action: { type: 'message', label: label.slice(0, 20), text: t } }; }
 function qrPostback(label, data) { return { type: 'action', action: { type: 'postback', label: label.slice(0, 20), data, displayText: label } }; }
@@ -414,7 +416,7 @@ function qrPostback(label, data) { return { type: 'action', action: { type: 'pos
 async function reply(env, token, messages) {
   if (!token) return false;
   const r = await fetch('https://api.line.me/v2/bot/message/reply', {
-    method: 'POST', headers: { authorization: 'Bearer ' + env.LINE_CHANNEL_ACCESS_TOKEN, 'content-type': 'application/json' },
+    method: 'POST', headers: { authorization: 'Bearer ' + tok(env), 'content-type': 'application/json' },
     body: JSON.stringify({ replyToken: token, messages }),
   });
   if (!r.ok) console.error('reply', r.status, await r.text());
@@ -422,7 +424,7 @@ async function reply(env, token, messages) {
 }
 async function push(env, to, messages, quiet) {
   const r = await fetch('https://api.line.me/v2/bot/message/push', {
-    method: 'POST', headers: { authorization: 'Bearer ' + env.LINE_CHANNEL_ACCESS_TOKEN, 'content-type': 'application/json' },
+    method: 'POST', headers: { authorization: 'Bearer ' + tok(env), 'content-type': 'application/json' },
     body: JSON.stringify({ to, messages, notificationDisabled: !!quiet }),
   });
   if (!r.ok) console.error('push', r.status, await r.text());
@@ -430,13 +432,13 @@ async function push(env, to, messages, quiet) {
 }
 async function getProfile(env, uid) {
   try {
-    const r = await fetch('https://api.line.me/v2/bot/profile/' + uid, { headers: { authorization: 'Bearer ' + env.LINE_CHANNEL_ACCESS_TOKEN } });
+    const r = await fetch('https://api.line.me/v2/bot/profile/' + uid, { headers: { authorization: 'Bearer ' + tok(env) } });
     return r.ok ? await r.json() : {};
   } catch { return {}; }
 }
 function startLoading(env, uid) {
   fetch('https://api.line.me/v2/bot/chat/loading/start', {
-    method: 'POST', headers: { authorization: 'Bearer ' + env.LINE_CHANNEL_ACCESS_TOKEN, 'content-type': 'application/json' },
+    method: 'POST', headers: { authorization: 'Bearer ' + tok(env), 'content-type': 'application/json' },
     body: JSON.stringify({ chatId: uid, loadingSeconds: 20 }),
   }).catch(() => {});
 }
