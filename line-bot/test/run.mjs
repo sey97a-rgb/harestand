@@ -10,6 +10,7 @@ globalThis.fetch = async (url, opt = {}) => {
   url = String(url);
   if (url.includes('anthropic')) return new Response(JSON.stringify({ content: [{ type: 'text', text: aiOut }] }));
   if (url.includes('/profile/')) return new Response(JSON.stringify({ displayName: url.endsWith('STAFF') ? '山川' : '比嘉' }));
+  if (url.includes('richmenu')) return new Response(JSON.stringify({ richMenuId: 'rm1', richmenus: [] }));
   if (url.includes('/message/')) { sent.push({ url: url.split('/').pop(), body: JSON.parse(opt.body) }); return new Response('{}'); }
   return new Response('{}');
 };
@@ -75,6 +76,10 @@ ok(sent[0].body.messages[0].quickReply.items.length >= 1, '宛先未選択なら
 // AIの出力が壊れたとき
 sent.length = 0; aiOut = 'すみません'; await post(msg('UCUST', '?'));
 ok(sent.some(s => s.url === 'push' && s.body.to === 'USTAFF'), '壊れた出力は担当者へ');
+// APIキーなし
+delete env.ANTHROPIC_API_KEY; kv.delete('pause:UCUST'); sent.length = 0; await post(msg('UCUST', 'こんにちは'));
+ok(sent.some(s => s.url === 'reply' && s.body.messages[0].text.includes('¥16,500')), 'キーなしは定型文');
+ok(kv.get('richmenu') === 'rm1', 'リッチメニュー自動設定');
 // GET
 ok((await (await worker.fetch(new Request('https://x/'), env, {})).text()).includes('harestand-line'), 'GET /');
 console.log(fails ? `${fails} 件NG` : 'すべてOK'); process.exit(fails ? 1 : 0);

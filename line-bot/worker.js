@@ -19,7 +19,7 @@
  * ============================================================
  */
 
-const VERSION = 'harestand-line v1.3 (2026-11-24)';
+const VERSION = 'harestand-line v1.4 (2026-11-24)';
 const MODEL = 'claude-sonnet-5';
 const SITE = 'https://harestand.com';
 const TEL = '090-8292-9414';
@@ -54,6 +54,8 @@ const FACTS = `
 【ガイド】立札 ${SITE}/guide/tatefuda/ ／相場 ${SITE}/guide/souba/ ／締切 ${SITE}/guide/itsumade/ ／県外から ${SITE}/guide/kengai/ ／法人 ${SITE}/guide/houjin/ ／エリア ${SITE}/area/
 `;
 
+const FALLBACK = 'メッセージありがとうございます。ハレスタです。\n\n・祝いスタンド ¥16,500／¥27,500／¥44,000（税込・バルーン入り）\n・胡蝶蘭 ¥27,500〜\n・那覇・南部7市町は当日12時までのご注文で当日お届け\n\nご注文は「お届け日時・お届け先（店名・住所）・ご予算・立札の文字」をお送りください。担当者から確認のご連絡をいたします。';
+
 const RULES = `
 あなたは「ハレスタ」の公式LINEでお客さまに返信する担当です。以下を守ってください。
 - 丁寧でやわらかい敬語。1通は短く（スマホで読みやすく3〜8行）。絵文字は使わない。箇条書きは「・」。
@@ -85,6 +87,7 @@ export default {
       const ok = await verifySignature(body, request.headers.get('x-line-signature') || '', lineKeys(env).secret);
       if (!ok) return new Response('bad signature', { status: 401 });
       let data; try { data = JSON.parse(body); } catch { return new Response('bad json', { status: 400 }); }
+      ctx.waitUntil(ensureRichMenu(env).catch(e => console.error('richmenu', e)));
       for (const ev of data.events || []) ctx.waitUntil(handleEvent(ev, env).catch(e => console.error('event error', e)));
       return new Response('ok');
     }
@@ -172,7 +175,9 @@ async function customerMessage(env, ev, uid, staff) {
 
   startLoading(env, uid);
   let ai;
-  try {
+  if (!String(env.ANTHROPIC_API_KEY || '').trim()) {
+    ai = { reply: FALLBACK, escalate: true, reason: 'AIのAPIキーが未設定のため定型文で返信しました。内容を確認して返信してください', summary: '' };
+  } else try {
     ai = await askAI(env, hist);
   } catch (e) {
     console.error('AI error', e);
@@ -356,6 +361,13 @@ function greeting() {
       qrMessage('立札の書き方', '立札の書き方を教えてください'),
     ] },
   };
+}
+
+/* リッチメニューがまだ無ければ一度だけ作る（Webhookの検証や最初のメッセージで動く） */
+async function ensureRichMenu(env) {
+  if (await env.HS_KV.get('richmenu')) return;
+  const r = await setupRichMenu(env);
+  await env.HS_KV.put('richmenu', r.richMenuId);
 }
 
 async function setupRichMenu(env) {
