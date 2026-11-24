@@ -19,7 +19,7 @@
  * ============================================================
  */
 
-const VERSION = 'harestand-line v1.4 (2026-11-24)';
+const VERSION = 'harestand-line v1.5 (2026-11-24)';
 const MODEL = 'claude-sonnet-5';
 const SITE = 'https://harestand.com';
 const TEL = '090-8292-9414';
@@ -79,7 +79,9 @@ export default {
     const url = new URL(request.url);
     if (request.method === 'GET' && url.pathname === '/') {
       const lk = lineKeys(env);
-      const have = `チャネルシークレット:${lk.secret ? 'OK' : 'なし'}\nアクセストークン:${lk.token ? 'OK' : 'なし'}\nAIのAPIキー:${String(env.ANTHROPIC_API_KEY || '').trim() ? 'OK' : 'なし'}`;
+      const rm = (await env.HS_KV.get('richmenu')) || ('なし ' + ((await env.HS_KV.get('richmenu_err')) || ''));
+      const staffN = (await getStaff(env)).length;
+      const have = `リッチメニュー:${rm}\n担当者:${staffN}人\nチャネルシークレット:${lk.secret ? 'OK' : 'なし'}\nアクセストークン:${lk.token ? 'OK' : 'なし'}\nAIのAPIキー:${String(env.ANTHROPIC_API_KEY || '').trim() ? 'OK' : 'なし'}`;
       return new Response(VERSION + '\n' + have + '\n', { headers: { 'content-type': 'text/plain; charset=utf-8' } });
     }
     if (request.method === 'POST' && (url.pathname === '/webhook' || url.pathname === '/')) {
@@ -87,7 +89,7 @@ export default {
       const ok = await verifySignature(body, request.headers.get('x-line-signature') || '', lineKeys(env).secret);
       if (!ok) return new Response('bad signature', { status: 401 });
       let data; try { data = JSON.parse(body); } catch { return new Response('bad json', { status: 400 }); }
-      ctx.waitUntil(ensureRichMenu(env).catch(e => console.error('richmenu', e)));
+      ctx.waitUntil(ensureRichMenu(env).catch(e => env.HS_KV.put('richmenu_err', String(e).slice(0, 500))));
       for (const ev of data.events || []) ctx.waitUntil(handleEvent(ev, env).catch(e => console.error('event error', e)));
       return new Response('ok');
     }
