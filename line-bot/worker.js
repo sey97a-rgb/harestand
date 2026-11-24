@@ -19,7 +19,7 @@
  * ============================================================
  */
 
-const VERSION = 'harestand-line v1.2 (2026-11-24)';
+const VERSION = 'harestand-line v1.3 (2026-11-24)';
 const MODEL = 'claude-sonnet-5';
 const SITE = 'https://harestand.com';
 const TEL = '090-8292-9414';
@@ -76,12 +76,13 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     if (request.method === 'GET' && url.pathname === '/') {
-      const have = ['LINE_CHANNEL_SECRET','LINE_CHANNEL_ACCESS_TOKEN','ANTHROPIC_API_KEY'].map(k => k + ':' + (env[k] ? 'OK(' + String(env[k]).trim().length + '文字)' : 'なし')).join('\n');
+      const lk = lineKeys(env);
+      const have = `チャネルシークレット:${lk.secret ? 'OK' : 'なし'}\nアクセストークン:${lk.token ? 'OK' : 'なし'}\nAIのAPIキー:${String(env.ANTHROPIC_API_KEY || '').trim() ? 'OK' : 'なし'}`;
       return new Response(VERSION + '\n' + have + '\n', { headers: { 'content-type': 'text/plain; charset=utf-8' } });
     }
     if (request.method === 'POST' && (url.pathname === '/webhook' || url.pathname === '/')) {
       const body = await request.text();
-      const ok = await verifySignature(body, request.headers.get('x-line-signature') || '', String(env.LINE_CHANNEL_SECRET || '').trim());
+      const ok = await verifySignature(body, request.headers.get('x-line-signature') || '', lineKeys(env).secret);
       if (!ok) return new Response('bad signature', { status: 401 });
       let data; try { data = JSON.parse(body); } catch { return new Response('bad json', { status: 400 }); }
       for (const ev of data.events || []) ctx.waitUntil(handleEvent(ev, env).catch(e => console.error('event error', e)));
@@ -408,7 +409,12 @@ async function touchCustomer(env, uid, name, last) {
 /* ------------------------------------------------------------
  *  LINE API
  * ------------------------------------------------------------ */
-function tok(env) { return String(env.LINE_CHANNEL_ACCESS_TOKEN || '').trim(); }
+/* 入れる欄を取り違えても動くように、値の形でチャネルシークレット（32桁の英数字）とアクセストークン（長い文字列）を見分ける */
+function lineKeys(env) {
+  const vals = ['LINE_CHANNEL_SECRET', 'LINE_CHANNEL_ACCESS_TOKEN', 'LINE_SECRET', 'LINE_TOKEN'].map(k => String(env[k] || '').trim()).filter(Boolean);
+  return { secret: vals.find(v => /^[0-9a-f]{32}$/i.test(v)) || '', token: vals.filter(v => v.length > 60).sort((a, b) => b.length - a.length)[0] || '' };
+}
+function tok(env) { return lineKeys(env).token; }
 function text(t) { return { type: 'text', text: String(t).slice(0, 4900) }; }
 function qrMessage(label, t) { return { type: 'action', action: { type: 'message', label: label.slice(0, 20), text: t } }; }
 function qrPostback(label, data) { return { type: 'action', action: { type: 'postback', label: label.slice(0, 20), data, displayText: label } }; }

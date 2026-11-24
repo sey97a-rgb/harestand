@@ -2,7 +2,7 @@
 import worker from '../worker.js';
 const kv = new Map();
 const env = {
-  LINE_CHANNEL_SECRET: 'sec', LINE_CHANNEL_ACCESS_TOKEN: 'tok', ANTHROPIC_API_KEY: 'k', 
+  LINE_CHANNEL_SECRET: '0123456789abcdef0123456789abcdef', LINE_CHANNEL_ACCESS_TOKEN: 'T'.repeat(172), ANTHROPIC_API_KEY: 'k', 
   HS_KV: { get: async k => kv.has(k) ? kv.get(k) : null, put: async (k, v) => kv.set(k, v), delete: async k => kv.delete(k) },
 };
 const sent = []; let aiOut = '';
@@ -14,7 +14,7 @@ globalThis.fetch = async (url, opt = {}) => {
   return new Response('{}');
 };
 async function sign(body) {
-  const key = await crypto.subtle.importKey('raw', new TextEncoder().encode('sec'), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+  const key = await crypto.subtle.importKey('raw', new TextEncoder().encode('0123456789abcdef0123456789abcdef'), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
   return btoa(String.fromCharCode(...new Uint8Array(await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(body)))));
 }
 async function post(ev) {
